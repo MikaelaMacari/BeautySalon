@@ -6,6 +6,7 @@ const Main: React.FC = () => {
     <div className="main">
       <Header />
       <PageContainer />
+      Home
     </div>
   );
 };

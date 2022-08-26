@@ -6,6 +6,7 @@ const FinishOrder: React.FC = () => {
     <div className="finishOrder">
       <Header />
       <PageContainer />
+      Finish Order
     </div>
   );
 };

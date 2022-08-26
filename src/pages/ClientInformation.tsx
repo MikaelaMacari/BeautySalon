@@ -6,6 +6,7 @@ const ClientInformation: React.FC = () => {
     <div className="clientInformation">
       <Header />
       <PageContainer />
+      Client Information
     </div>
   );
 };
