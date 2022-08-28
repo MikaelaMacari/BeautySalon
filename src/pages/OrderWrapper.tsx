@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import ClientInformation from "../pages/ClientInformation";
-import FinishOrder from "../pages/FinishOrder";
-import SelectService from "../pages/SelectService";
+import ClientInformation from "./ClientInformation";
+import FinishOrder from "./FinishOrder";
+import SelectService from "./SelectService";
 
 const OrderWrapper: React.FC = () => {
   const { stepId } = useParams();

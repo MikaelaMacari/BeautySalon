@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import Main from "../pages/Main";
 import SharedLayout from "../pages/SharedLayout";
-import OrderLayout from "./OrderLayout";
-import OrderWrapper from "./OrderWrapper";
+
+import OrderWrapper from "../pages/OrderWrapper";
+import OrderLayout from "../pages/OrderLayout";
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
