@@ -65,15 +65,7 @@ export const NavbarLinkExtended = styled(Link)`
     font-weight: 500;
   }
 `;
-export const LogoContainer = styled.div`
-  display: flex;
-`;
-export const Logo = styled.img`
-  max-width: 80px;
-`;
-export const BigLogo = styled.img`
-  max-width: 170px;
-`;
+
 export const VerticalDivider = styled.div`
   height: 16px;
   width: 1px;

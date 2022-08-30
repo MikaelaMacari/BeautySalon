@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import {
   Avatar,
-  BigLogo,
   DropdownContainer,
   DropdownContent,
   DropdownOptionsContainer,
   HeaderContainer,
   LeftContainer,
-  Logo,
-  LogoContainer,
   NavbarExtendedContainer,
   NavbarInnerContainer,
   NavbarLink,
@@ -18,12 +15,21 @@ import {
   RightContainer,
   VerticalDivider,
 } from "../../styles/Header.style";
-import sm_logoUrl from "../../assets/img/logo_sm.png";
-import bigLogoUrl from "../../assets/img/logo.png";
+
 import chevronDown from "../../assets/img/chevron-down.png";
 import NavbarDropdown from "../base/NavbarDropdown";
 import { Link } from "react-router-dom";
+import { LinkInterface } from "../../ts/interfaces";
+import NavbarBrand from "../base/NavbarBrand";
+
 const Header: React.FC = () => {
+  const links: LinkInterface[] = [
+    { to: "/", text: "home" },
+    { to: "/", text: "help" },
+    { to: "/", text: "orders" },
+    { to: "/", text: "cart" },
+    { to: "/", text: "profile" },
+  ];
   const [extendNavbar, setExtendNavbar] = useState(false);
   const [extendDropdown, setExtendDropdown] = useState(false);
   const changeState = () => {
@@ -37,12 +43,7 @@ const Header: React.FC = () => {
       <HeaderContainer extendNavbar={extendNavbar}>
         <NavbarInnerContainer>
           <LeftContainer>
-            <LogoContainer>
-              <Link to="/">
-                <Logo src={sm_logoUrl} />
-                <BigLogo src={bigLogoUrl} />
-              </Link>
-            </LogoContainer>
+            <NavbarBrand />
           </LeftContainer>
           <RightContainer>
             <NavbarLinkContainer>
@@ -68,7 +69,7 @@ const Header: React.FC = () => {
           <NavbarExtendedContainer>
             <NavbarLinkExtended to="/">help</NavbarLinkExtended>
             <NavbarLinkExtended to="/">orders</NavbarLinkExtended>
-            <NavbarLinkExtended to="/">Login</NavbarLinkExtended>
+            <NavbarLinkExtended to="/">Cart</NavbarLinkExtended>
             <NavbarLinkExtended to="/">Profile</NavbarLinkExtended>
           </NavbarExtendedContainer>
         )}
