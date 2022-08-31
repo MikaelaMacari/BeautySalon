@@ -1,6 +1,12 @@
 import React from "react";
-import AppRoutes from "./router/AppRoutes";
+import { Outlet } from "react-router-dom";
+import BaseRouter from "./router";
 const App: React.FC = () => {
-  return <AppRoutes />;
+  return (
+    <>
+      <BaseRouter />
+      <Outlet />
+    </>
+  );
 };
 export default App;
