@@ -1,14 +1,14 @@
-import React from "react";
 import { Header } from "../components/header";
 import { PageContainer } from "../components/layout";
-const DefaultLayout = ({ children }: { children: JSX.Element }) => {
+
+const OrdersLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <>
       <Header />
       <PageContainer />
+      <h2>Step nr:</h2>
       {children}
     </>
   );
 };
-
-export default DefaultLayout;
+export default OrdersLayout;

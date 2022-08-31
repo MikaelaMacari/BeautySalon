@@ -1,18 +1,12 @@
-export interface DataInterface {
-  services: Services[];
-  products: Products[];
-  masters: Masters[];
-}
-
-export interface Services {
+export interface ServicesInterface {
   name: string;
   img: string;
 }
-export interface Products {
+export interface ProductsInterface {
   name: string;
   img: string;
 }
-export interface Masters {
+export interface MastersInterface {
   name: string;
   img: string;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-const PageContainer: React.FC = () => {
+export const PageContainer: React.FC = () => {
   return (
     <div className="pageContainer">
       <h1>Page Container </h1>
@@ -7,5 +7,3 @@ const PageContainer: React.FC = () => {
     </div>
   );
 };
-
-export default PageContainer;
