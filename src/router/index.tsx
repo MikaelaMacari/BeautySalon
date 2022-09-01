@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Layout } from "../layouts/layout";
+import { Layout } from "../components/layout/layout";
 import { RouteInterface } from "../ts/interfaces";
 import homeRoutes from "./modules/home";
 import orderRoutes from "./modules/orders";

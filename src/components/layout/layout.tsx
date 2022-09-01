@@ -1,10 +1,9 @@
 import React from "react";
-import { EnumType } from "typescript";
-import { PageLayout } from "../ts/enum";
+import { PageLayout } from "../../ts/enum";
 
 export const LayoutType = {
-  order: React.lazy(() => import("../layouts/orders")),
-  default: React.lazy(() => import("../layouts/default")),
+  order: React.lazy(() => import("./orders")),
+  default: React.lazy(() => import("../../layouts/default")),
 } as any;
 
 interface LayoutProps {

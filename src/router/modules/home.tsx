@@ -4,7 +4,7 @@ import { RouteInterface } from "../../ts/interfaces";
 const homeRoutes: RouteInterface[] = [
   {
     path: "/",
-    element: lazy(() => import("../../pages/home/Home")),
+    element: lazy(() => import("../../pages/home")),
   },
 ];
 export default homeRoutes;

@@ -5,7 +5,7 @@ import { RouteInterface } from "../../ts/interfaces";
 const orderRoutes: RouteInterface[] = [
   {
     path: "/orders/step/:stepId",
-    element: lazy(() => import("../../components/layout/OrderWrapper")),
+    element: lazy(() => import("../../pages/orders/create")),
     layout: PageLayout.Order,
   },
 ];
