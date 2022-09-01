@@ -1,5 +1,5 @@
 import React from "react";
-const Button: React.FC = () => {
+export const Button: React.FC = () => {
   return (
     <div className="Button">
       <h1>Button </h1>
@@ -7,5 +7,3 @@ const Button: React.FC = () => {
     </div>
   );
 };
-
-export default Button;
