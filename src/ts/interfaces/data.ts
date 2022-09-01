@@ -7,6 +7,7 @@ export interface ProductsInterface {
   img: string;
 }
 export interface MastersInterface {
+  id: number;
   name: string;
   img: string;
 }
