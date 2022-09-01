@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { ClientInformation, FinishOrder, SelectService } from "../../components/orders/create";
+import ClientInformation from "../../components/orders/ClientInformation";
+import FinishOrder from "../../components/orders/FinishOrder";
+import SelectService from "../../components/orders/SelectService";
 
 export const Create: React.FC = () => {
   const { stepId } = useParams();

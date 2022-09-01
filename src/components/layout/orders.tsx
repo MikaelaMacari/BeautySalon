@@ -1,5 +1,5 @@
-import { Header } from "./header";
-import { PageContainer } from ".";
+import Header from "./Header";
+import PageContainer from "./PageContainer";
 
 const OrdersLayout = ({ children }: { children: JSX.Element }) => {
   return (
