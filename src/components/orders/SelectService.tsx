@@ -11,13 +11,13 @@ const SelectService: React.FC = () => {
   //   return master.name;
   // });
 
-  // console.log(newOrder);
   const handleChange = (e: { target: { value: React.SetStateAction<string> } }) => {
     setName(e.target.value);
   };
   const handleClick = () => {
     dispatch(UpdateOrder({ master: name }));
   };
+
   return (
     <>
       <div>Masters: </div>
@@ -31,7 +31,7 @@ const SelectService: React.FC = () => {
         })}
       </select>
       <button onClick={handleClick}>Add Master</button>
-
+      {console.log(newOrder.master)}
       <div>Master you chossed: {name}</div>
     </>
   );
