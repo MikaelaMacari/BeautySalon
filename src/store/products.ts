@@ -10,15 +10,15 @@ const initialState: ProductsStateInterface = {
   value: products,
 };
 
-export const orders = createSlice({
-  name: "orders",
+export const productsSlice = createSlice({
+  name: "products",
   initialState,
   reducers: {
-    addOrder: (state, action: PayloadAction<ProductsInterface>) => {
+    addProduct: (state, action: PayloadAction<ProductsInterface>) => {
       state.value.push(action.payload);
     },
   },
 });
 
-export const { addOrder } = orders.actions;
-export default orders.reducer;
+export const { addProduct } = productsSlice.actions;
+export default productsSlice.reducer;

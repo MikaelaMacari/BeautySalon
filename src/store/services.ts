@@ -1,21 +1,24 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { services } from "../mock";
+import { ServicesInterface } from "../ts/interfaces";
 
-interface OrderState {
-  value: string[];
+interface ServicesStateInterface {
+  value: ServicesInterface[];
 }
-const initialState: OrderState = {
-  value: [],
+
+const initialState: ServicesStateInterface = {
+  value: services,
 };
 
-export const orders = createSlice({
-  name: "orders",
+export const servicesSlice = createSlice({
+  name: "services",
   initialState,
   reducers: {
-    addOrder: (state, action: PayloadAction<string>) => {
+    addService: (state, action: PayloadAction<ServicesInterface>) => {
       state.value.push(action.payload);
     },
   },
 });
 
-export const { addOrder } = orders.actions;
-export default orders.reducer;
+export const { addService } = servicesSlice.actions;
+export default servicesSlice.reducer;
