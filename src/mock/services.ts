@@ -2,47 +2,58 @@ import { ServicesInterface } from "../ts/interfaces/data";
 
 export const services: ServicesInterface[] = [
   {
+    id: 1,
     name: "hair woman",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 2,
     name: "nails",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 3,
     name: "barber",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 4,
     name: "facial treatments",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 5,
     name: "eye treatment",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 6,
     name: "body massage",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 7,
     name: "makeup",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 8,
     name: "waxing",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 9,
     name: "body shaping",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 10,
     name: "anti-aging treatments",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
   {
+    id: 11,
     name: "advanced facial treatments",
-    img: "../../public/assets/img/services.png",
+    img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
   },
 ];
