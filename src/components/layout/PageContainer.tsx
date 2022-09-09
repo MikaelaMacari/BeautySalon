@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../assets/styles/components/layout/PageContainer";
+import Container from "../../assets/styles/components/layout/PageContainer.style";
 const PageContainer = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
   return <Container>{children}</Container>;
 };
