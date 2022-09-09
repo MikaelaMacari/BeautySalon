@@ -14,11 +14,15 @@ export const servicesSlice = createSlice({
   name: "services",
   initialState,
   reducers: {
+
     setServices: (state: ServicesStateInterface, action: PayloadAction<ServicesInterface[]>) => {
       state.value = action.payload;
+
     },
   },
 });
 
+
 export const { setServices } = servicesSlice.actions;
+
 export default servicesSlice.reducer;

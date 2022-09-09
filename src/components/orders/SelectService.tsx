@@ -32,7 +32,9 @@ const SelectService: React.FC = () => {
         })}
       </select>
       <button onClick={handleClick}>Add Master</button>
+
       {console.log(newOrder.name)}
+
       <div>Master you chossed: {name}</div>
     </>
   );

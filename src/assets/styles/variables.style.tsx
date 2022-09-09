@@ -18,14 +18,14 @@ export const fonts = {
 };
 
 export const fontSizes = {
-  $sizeXXS: `12px`,
-  $sizeXS: `14px`,
-  $sizeS: `16px`,
-  $sizeM: `23px`,
-  $sizeL: `24px`,
-  $sizeXL: `25px`,
-  $sizeXXL: `30px`,
-  $sizeXXXL: `48px`,
+  sizeXXS: `12px`,
+  sizeXS: `14px`,
+  sizeS: `16px`,
+  sizeM: `23px`,
+  sizeL: `24px`,
+  sizeXL: `25px`,
+  sizeXXL: `30px`,
+  sizeXXXL: `48px`,
 };
 
 //Margins
@@ -50,7 +50,8 @@ export const width = {
   widthL: `400px`,
 };
 export const height = {
-  heightS: `60px`,
-  heightM: `90px`,
-  heightL: `120px`,
+  heightXS: `60px`,
+  heightS: `90px`,
+  heightM: `120px`,
+  heightL: `150px`,
 };
