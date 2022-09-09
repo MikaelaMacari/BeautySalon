@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface OrdersInterface {
-  serviceCategory: string;
-  service: string;
-  master: string;
+  serviceCategoryId: string;
+  serviceId: string;
+  masterId: string;
   date: string;
   time: string;
   price: number;
@@ -34,11 +34,11 @@ export const ordersSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    UpdateOrder: (state, action: PayloadAction<Partial<OrdersInterface>>) => {
+    updateOrder: (state: NewOrderStateInterface, action: PayloadAction<Partial<OrdersInterface>>) => {
       return { ...state, value: action.payload };
     },
   },
 });
 
-export const { UpdateOrder } = ordersSlice.actions;
+export const { updateOrder } = ordersSlice.actions;
 export default ordersSlice.reducer;

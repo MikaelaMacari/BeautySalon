@@ -14,11 +14,11 @@ export const mastersSlice = createSlice({
   name: "masters",
   initialState,
   reducers: {
-    addMaster: (state, action: PayloadAction<MastersInterface>) => {
+    setMaster: (state: MasterStateInterface, action: PayloadAction<MastersInterface>) => {
       state.value.push(action.payload);
     },
   },
 });
 
-export const { addMaster } = mastersSlice.actions;
+export const { setMaster } = mastersSlice.actions;
 export default mastersSlice.reducer;

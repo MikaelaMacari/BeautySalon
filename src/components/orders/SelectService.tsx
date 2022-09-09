@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { UpdateOrder } from "../../store/orders";
+import { updateOrder } from "../../store/orders";
 import { RootState } from "../../store/types";
 const SelectService: React.FC = () => {
   const masters = useSelector((state: RootState) => state.masters.value);
@@ -15,14 +15,14 @@ const SelectService: React.FC = () => {
     setName(e.target.value);
   };
   const handleClick = () => {
-    dispatch(UpdateOrder({ master: name }));
+    dispatch(updateOrder({ masterId: name }));
   };
 
   return (
     <>
       <div>Masters: </div>
       <select name="masters" onChange={handleChange}>
-        {masters.map((master, index) => {
+        {masters.map((master) => {
           return (
             <option key={master.id} value={master.name}>
               {master.name}
@@ -31,7 +31,7 @@ const SelectService: React.FC = () => {
         })}
       </select>
       <button onClick={handleClick}>Add Master</button>
-      {console.log(newOrder.master)}
+      {console.log(newOrder.masterId)}
       <div>Master you chossed: {name}</div>
     </>
   );
