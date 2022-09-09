@@ -1,5 +1,10 @@
 import React from "react";
+import Header from "./Header";
 const ClientInformation: React.FC = () => {
-  return <div className="clientInformation">Client Information</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 export default ClientInformation;

@@ -1,5 +1,10 @@
 import React from "react";
+import Header from "./Header";
 const FinishOrder: React.FC = () => {
-  return <div className="finishOrder">Finish Order</div>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 export default FinishOrder;
