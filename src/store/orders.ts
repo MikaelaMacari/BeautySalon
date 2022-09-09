@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface OrdersInterface {
-  serviceCategoryId: string;
-  serviceId: string;
-  masterId: string;
+  serviceCategoryId: number;
+  serviceId: number;
+  masterId: number;
   date: string;
   time: string;
   price: number;

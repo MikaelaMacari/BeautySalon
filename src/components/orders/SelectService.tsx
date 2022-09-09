@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../store/orders";
 import { RootState } from "../../store/types";
+import { MastersInterface } from "../../ts/interfaces";
 const SelectService: React.FC = () => {
   const masters = useSelector((state: RootState) => state.masters.value);
   const newOrder = useSelector((state: RootState) => state.orders.value);
@@ -15,14 +16,14 @@ const SelectService: React.FC = () => {
     setName(e.target.value);
   };
   const handleClick = () => {
-    dispatch(updateOrder({ masterId: name }));
+    dispatch(updateOrder({ name: name }));
   };
 
   return (
     <>
       <div>Masters: </div>
       <select name="masters" onChange={handleChange}>
-        {masters.map((master) => {
+        {masters.map((master: MastersInterface) => {
           return (
             <option key={master.id} value={master.name}>
               {master.name}
