@@ -34,7 +34,7 @@ export const Step = styled.div`
   padding: 8px 12px;
   font-size: ${fontSizes.sizeL};
   background-color: ${colors.titleBgColor};
-  border-radius: ${radius.$radiusXS};
+  border-radius: ${radius.radiusXS};
   @media (max-width: 420px) {
     font-size: ${fontSizes.sizeS};
   }

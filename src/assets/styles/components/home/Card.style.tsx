@@ -9,7 +9,7 @@ export const StyledCard = styled.div`
 `;
 export const CardImg = styled.img`
   width: 100%;
-  border-radius: ${radius.$radiusS};
+  border-radius: ${radius.radiusS};
   width: ${width.widthXS};
   height: ${height.heightM};
 `;

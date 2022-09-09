@@ -39,8 +39,8 @@ export const margins = {
 };
 
 export const radius = {
-  $radiusXS: `12px`,
-  $radiusS: `20px`,
+  radiusXS: `12px`,
+  radiusS: `20px`,
 };
 
 export const width = {
