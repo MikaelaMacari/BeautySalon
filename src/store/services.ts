@@ -14,11 +14,11 @@ export const servicesSlice = createSlice({
   name: "services",
   initialState,
   reducers: {
-    setService: (state: ServicesStateInterface, action: PayloadAction<ServicesInterface>) => {
-      state.value.push(action.payload);
+    setServices: (state: ServicesStateInterface, action: PayloadAction<ServicesInterface[]>) => {
+      state.value = action.payload;
     },
   },
 });
 
-export const { setService } = servicesSlice.actions;
+export const { setServices } = servicesSlice.actions;
 export default servicesSlice.reducer;
