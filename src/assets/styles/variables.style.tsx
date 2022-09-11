@@ -2,6 +2,7 @@
 export const colors = {
   primaryBgColor: `#ebe8ec`,
   secondaryBgColor: `#ffffff`,
+  inputBgColor: `#fafafa`,
   titleBgColor: `#eefd77`,
   avatarBgColor: `#258750`,
   primaryTextColor: `#5255c8`,
