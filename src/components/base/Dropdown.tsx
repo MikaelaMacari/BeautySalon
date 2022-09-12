@@ -2,11 +2,14 @@ import React from "react";
 
 import Divider from "@mui/material/Divider";
 
-import { Option, Select } from "../../assets/styles/components/base/Dropdown.style";
+import {
+  Option,
+  Select,
+} from "../../assets/styles/components/base/Dropdown.style";
 
 interface DropdownInterface {
   list: { name: string; img: string; id: number }[];
-  handleClick: (value: string) => void;
+  handleClick: (value: any) => void;
 }
 
 const Dropdown = ({ list, handleClick }: DropdownInterface) => {
@@ -16,10 +19,10 @@ const Dropdown = ({ list, handleClick }: DropdownInterface) => {
         const isLast: boolean = index === list.length - 1;
         return (
           <>
-            <Option key={item.id} onClick={() => handleClick(item.name)}>
-              {item.name}
+            <Option key={index} onClick={() => handleClick(item)}>
+              {item.name} {item.id}
             </Option>
-            {!isLast && <Divider />}
+            {!isLast && <Divider key={`divider-${index}`} />}
           </>
         );
       })}

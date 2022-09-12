@@ -14,11 +14,25 @@ export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-
-    setProducts: (state: ProductsStateInterface, action: PayloadAction<ProductsInterface[]>) => {
+    setProducts: (
+      state: ProductsStateInterface,
+      action: PayloadAction<ProductsInterface[]>
+    ) => {
       state.value = action.payload;
-
     },
+    // todo make getter by id
+    // getProductById: (
+    //   state: ProductsStateInterface,
+    //   { payload }: Payload<number>
+    // ) => {
+    //   const productIndex = state.value.findIndex(
+    //     (item) => item.id === payload
+    //   );
+    //   if (productIndex !== -1) {
+    //     return state.value[productIndex];
+    //   }
+    //   return null;
+    // },
   },
 });
 

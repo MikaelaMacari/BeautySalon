@@ -1,4 +1,3 @@
-import { link } from "fs/promises";
 import React from "react";
 import { DropdownOptionsContainer, HorizontalDivider } from "../../assets/styles/components/Header/DropdownMenu.style";
 import { NavbarLink } from "../../assets/styles/components/Header/Header.style";

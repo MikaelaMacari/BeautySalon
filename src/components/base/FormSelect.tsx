@@ -1,8 +1,11 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import { StyledContainer, StyledDropdown } from "../../assets/styles/components/base/FormSelect.style";
+import {
+  StyledContainer,
+  StyledDropdown,
+} from "../../assets/styles/components/base/FormSelect.style";
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 import Label from "./Label";
@@ -15,14 +18,30 @@ export interface FormInterface {
   description: string;
   list: { name: string; img: string; id: number }[];
   readonly: boolean;
-  getInputValue: (inputValue: string) => void;
+  getInputValue: (inputValue: number) => void;
+  returnObject?: boolean;
 }
 
-const FormSelect = ({ inputName, type, placeholder, title, description, list, readonly, getInputValue }: FormInterface) => {
+const FormSelect = ({
+  inputName,
+  type,
+  placeholder,
+  title,
+  description,
+  list,
+  readonly,
+  getInputValue,
+  returnObject = false,
+}: FormInterface) => {
   const [value, setValue] = useState<string>("");
-  const handleClick = (value: string) => {
-    setValue(value);
-    getInputValue(value);
+  const handleClick = (value: any) => {
+    setValue(value.name);
+
+    if (returnObject) {
+      getInputValue(value);
+    } else {
+      getInputValue(value.id);
+    }
   };
   // const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
   //   setValue(e.target.value);
@@ -32,7 +51,13 @@ const FormSelect = ({ inputName, type, placeholder, title, description, list, re
     <StyledContainer>
       <StyledDropdown>
         <Label title={title} description={description} />
-        <Input type={type} placeholder={placeholder} value={value} inputName={inputName} readonly={readonly} />
+        <Input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          inputName={inputName}
+          readonly={readonly}
+        />
         <ExpandMoreIcon />
       </StyledDropdown>
       <Dropdown list={list} handleClick={handleClick} />
