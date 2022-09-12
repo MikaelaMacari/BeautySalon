@@ -15,23 +15,24 @@ export interface FormInterface {
   description: string;
   list: { name: string; img: string; id: number }[];
   readonly: boolean;
+  getInputValue: (inputValue: string) => void;
 }
 
-const FormSelect = ({ inputName, type, placeholder, title, description, list, readonly }: FormInterface) => {
+const FormSelect = ({ inputName, type, placeholder, title, description, list, readonly, getInputValue }: FormInterface) => {
   const [value, setValue] = useState<string>("");
   const handleClick = (value: string) => {
     setValue(value);
+    getInputValue(value);
   };
-  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    setValue(e.target.value);
-  };
-  console.log(value);
+  // const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  //   setValue(e.target.value);
+  // };
 
   return (
     <StyledContainer>
       <StyledDropdown>
         <Label title={title} description={description} />
-        <Input type={type} placeholder={placeholder} value={value} inputName={inputName} readonly={readonly} handleChange={handleChange} />
+        <Input type={type} placeholder={placeholder} value={value} inputName={inputName} readonly={readonly} />
         <ExpandMoreIcon />
       </StyledDropdown>
       <Dropdown list={list} handleClick={handleClick} />

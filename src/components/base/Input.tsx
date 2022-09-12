@@ -7,11 +7,11 @@ interface InputInterface {
   placeholder: string;
   value: string;
   readonly: boolean;
-  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ inputName, type, placeholder, value, readonly, handleChange }: InputInterface) => {
-  return <StyledInput name={inputName} placeholder={placeholder} type={type} value={value} readOnly={readonly} onChange={handleChange}></StyledInput>;
+const Input = ({ inputName, type, placeholder, value, readonly }: InputInterface) => {
+  return <StyledInput name={inputName} placeholder={placeholder} type={type} value={value} readOnly={readonly}></StyledInput>;
 };
 
 export default Input;

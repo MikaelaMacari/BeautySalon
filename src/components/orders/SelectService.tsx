@@ -12,6 +12,9 @@ interface FormInterface {
   service: string;
   master: string;
 }
+interface SelectInterface {
+  inputValue: string;
+}
 const SelectService: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
@@ -27,6 +30,11 @@ const SelectService: React.FC = () => {
     service: "",
     master: "",
   });
+  const [value, setValue] = useState<string>("");
+  const getData = (inputValue: string) => {
+    setValue(inputValue);
+  };
+
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
   };
@@ -66,8 +74,24 @@ const SelectService: React.FC = () => {
 
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log(e.target.value);
-    // setValues({ ...values, [e.target.name]: e.target.value });
+    for (const property in newOrder) {
+      Object.keys(values).map((item) => {
+        if (item === property) {
+          dispatch(updateOrder({ serviceCategory: value }));
+          // setValues({ ...values, [e.target.name]: value });
+        }
+      });
+    }
+
+    // Object.keys(values).map((value) => {
+    //   // if (value === e.target.name) {
+    //   //   console.log(value);
+    //   // }
+    //   // dispatch(updateOrder({ name: value }));
+    //   // console.log(value === e.target.name);
+    //   console.log(value);
+    // });
+    // setValues({ ...values, [e.target.name]: value });
   };
 
   return (
@@ -85,6 +109,7 @@ const SelectService: React.FC = () => {
               description={row.description}
               list={row.list}
               readonly={row.readonly}
+              getInputValue={getData}
             />
           ))}
           <button onClick={handleClick}>Click</button>
