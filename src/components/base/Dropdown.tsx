@@ -14,16 +14,16 @@ interface DropdownInterface {
 
 const Dropdown = ({ list, handleClick }: DropdownInterface) => {
   return (
-    <Select>
+    <Select >
       {list.map((item, index) => {
         const isLast: boolean = index === list.length - 1;
         return (
-          <>
+          <div key={item.id}>
             <Option key={index} onClick={() => handleClick(item)}>
               {item.name} {item.id}
             </Option>
-            {!isLast && <Divider key={`divider-${index}`} />}
-          </>
+            {!isLast && <Divider key={`divider-${item.id}`} />}
+          </div>
         );
       })}
     </Select>

@@ -20,6 +20,20 @@ export const productsSlice = createSlice({
     ) => {
       state.value = action.payload;
     },
+    getProductById: (
+          state: ProductsStateInterface,
+          action: PayloadAction<ProductsInterface[]>
+    ) => {
+      const actionId =action.payload.map((item)=>item.id)      
+      const stateId = state.value.map((item)=>item.id)
+      state.value.map((item)=>{
+        if(stateId !== actionId){
+          return item
+        }else{
+          return null;
+        }
+      }) 
+    },
     // todo make getter by id
     // getProductById: (
     //   state: ProductsStateInterface,
@@ -36,5 +50,5 @@ export const productsSlice = createSlice({
   },
 });
 
-export const { setProducts } = productsSlice.actions;
+export const { setProducts, getProductById } = productsSlice.actions;
 export default productsSlice.reducer;

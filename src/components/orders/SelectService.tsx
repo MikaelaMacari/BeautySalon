@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import FormContainer from "../../assets/styles/components/orders/FormContainer";
@@ -7,21 +7,13 @@ import { RootState } from "../../store/types";
 import FormSelect from "../base/FormSelect";
 import Header from "./Header";
 
-interface FormInterface {
-  serviceCategory: string;
-  service: string;
-  master: string;
-}
-interface SelectInterface {
-  inputValue: number;
-}
+
 const SelectService: React.FC = () => {
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
   const masters = useSelector((state: RootState) => state.masters.value);
   const newOrder = useSelector((state: RootState) => state.orders.value);
   const dispatch = useDispatch();
-
   const setCategory = (serviceCategoryId: number) => {
     dispatch(updateOrder({ serviceCategoryId }));
   };
@@ -29,10 +21,14 @@ const SelectService: React.FC = () => {
   const setService = (serviceId: number) => {
     dispatch(updateOrder({ serviceId }));
   };
+  const setMaster = (masterId: number) => {
+    dispatch(updateOrder({ masterId }));
+  };
 
   const handleSubmit = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
   };
+
 
   const formSelectRows = [
     {
@@ -57,39 +53,22 @@ const SelectService: React.FC = () => {
       readonly: true,
       action: setService
     },
-    // {
-    //   id: 3,
-    //   inputName: "master",
-    //   type: "text",
-    //   placeholder: "Select from list",
-    //   title: "Master",
-    //   description: "Select a master",
-    //   list: masters,
-    //   readonly: true,
-    // },
+    {
+      id: 3,
+      inputName: "master",
+      type: "text",
+      placeholder: "Select from list",
+      title: "Master",
+      description: "Select a master",
+      list: masters,
+      readonly: true,
+      action: setMaster
+    },
   ];
 
   const handleClick = (e: any) => {
     e.preventDefault();
     console.log(newOrder);
-    // for (const property in newOrder) {
-    //   Object.keys(values).map((item) => {
-    //     if (item === property) {
-    //       dispatch(updateOrder({ serviceCategoryId }));
-    //       // setValues({ ...values, [e.target.name]: value });
-    //     }
-    //   });
-    // }
-
-    // Object.keys(values).map((value) => {
-    //   // if (value === e.target.name) {
-    //   //   console.log(value);
-    //   // }
-    //   // dispatch(updateOrder({ name: value }));
-    //   // console.log(value === e.target.name);
-    //   console.log(value);
-    // });
-    // setValues({ ...values, [e.target.name]: value });
   };
 
   return (

@@ -8,10 +8,12 @@ interface InputInterface {
   value: string;
   readonly: boolean;
   handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  openDropdown?:() => void;
 }
 
-const Input = ({ inputName, type, placeholder, value, readonly }: InputInterface) => {
-  return <StyledInput name={inputName} placeholder={placeholder} type={type} value={value} readOnly={readonly}></StyledInput>;
+const Input = ({ inputName, type, placeholder, value, readonly, openDropdown}: InputInterface) => {
+
+  return <StyledInput name={inputName} placeholder={placeholder} type={type} value={value} readOnly={readonly} onClick={openDropdown}></StyledInput>;
 };
 
 export default Input;

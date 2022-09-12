@@ -21,7 +21,9 @@ export interface FormInterface {
   getInputValue: (inputValue: number) => void;
   returnObject?: boolean;
 }
-
+export interface ValueInterface {
+  name: string; img: string; id: number 
+}
 const FormSelect = ({
   inputName,
   type,
@@ -34,14 +36,19 @@ const FormSelect = ({
   returnObject = false,
 }: FormInterface) => {
   const [value, setValue] = useState<string>("");
+  const [isOpen, setIsOpen]=useState<boolean>(false)
+  const openDropdown = ()=>{
+    setIsOpen((currentState) => !currentState)
+  }
   const handleClick = (value: any) => {
     setValue(value.name);
-
+    openDropdown();
     if (returnObject) {
       getInputValue(value);
     } else {
       getInputValue(value.id);
     }
+    
   };
   // const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
   //   setValue(e.target.value);
@@ -57,10 +64,13 @@ const FormSelect = ({
           value={value}
           inputName={inputName}
           readonly={readonly}
+          openDropdown={openDropdown}
         />
         <ExpandMoreIcon />
       </StyledDropdown>
-      <Dropdown list={list} handleClick={handleClick} />
+      {isOpen &&(
+        <Dropdown  list={list} handleClick={handleClick} />
+      )}
     </StyledContainer>
   );
 };
