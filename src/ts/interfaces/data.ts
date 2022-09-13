@@ -13,3 +13,8 @@ export interface MastersInterface {
   name: string;
   img: string;
 }
+export interface CurrenciesInterface {
+  id: number;
+  name: string;
+}
+

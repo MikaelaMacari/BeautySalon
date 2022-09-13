@@ -4,8 +4,10 @@ interface OrdersInterface {
   serviceCategoryId?: number;
   serviceId?: number;
   masterId?: number;
+  currencieId?: number;
   date: string;
-  time: string;
+  startTime: string;
+  endTime: string;
   price: number;
   name: string;
   phone: string;
@@ -19,8 +21,9 @@ interface NewOrderStateInterface {
 
 const newOrder = {
   date: "",
-  time: "",
-  price: 0,
+  startTime: "",
+  endTime: "",
+  price: 0,  
   name: "",
   phone: "",
   email: "",

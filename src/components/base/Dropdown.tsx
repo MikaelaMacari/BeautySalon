@@ -8,14 +8,14 @@ import {
 } from "../../assets/styles/components/base/Dropdown.style";
 
 interface DropdownInterface {
-  list: { name: string; img: string; id: number }[];
+  list?: { name: string; img?: string; id: number }[];
   handleClick: (value: any) => void;
 }
 
 const Dropdown = ({ list, handleClick }: DropdownInterface) => {
   return (
     <Select >
-      {list.map((item, index) => {
+      {list && list.map((item, index) => {
         const isLast: boolean = index === list.length - 1;
         return (
           <div key={item.id}>

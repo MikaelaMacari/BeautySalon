@@ -3,11 +3,13 @@ import ordersReducer from "./orders";
 import servicesReducer from "./services";
 import productsReducer from "./products";
 import mastersReducer from "./masters";
+import currenciesReducer from "./currencies";
 export const store = configureStore({
   reducer: {
     orders: ordersReducer,
     services: servicesReducer,
     products: productsReducer,
     masters: mastersReducer,
+    currencies: currenciesReducer,
   },
 });
