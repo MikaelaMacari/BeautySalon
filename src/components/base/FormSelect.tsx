@@ -59,9 +59,7 @@ const FormSelect = ({
     } else {
       getInputValue(value.id);
     }
-    setValue(value.name);
-    console.log(isCurrencie);
-    
+    setValue(value.name);    
    };
 
 

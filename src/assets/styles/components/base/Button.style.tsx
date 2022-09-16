@@ -1,12 +1,22 @@
 import styled from "styled-components";
+import { colors, fonts, fontSizes } from "../../variables.style";
 
-const Button = styled.button`
-  display: inline-block;
-  color: palevioletred;
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-  display: block;
+export const StyledButton = styled.button`
+padding: 12px 120px;
+gap: 5px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: ${fonts.primaryFont};
+font-size: ${fontSizes.sizeL};
+background-color: ${colors.secondaryBgColor};
+border: none;
+border-radius: 240px;
+cursor: pointer;
+&:hover {
+   color: ${colors.primaryTextColor};
+   background-color: ${colors.primaryTextColor};
+   color: ${colors.secondaryBgColor};
+   transition: 0.3s ease-in;
+  }
 `;
