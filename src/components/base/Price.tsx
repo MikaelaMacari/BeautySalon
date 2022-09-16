@@ -1,37 +1,3 @@
-// import React, {useState} from "react";
-// import { useDispatch, useSelector } from "react-redux";
-
-// import { updateOrder } from "../../store/orders";
-// import { RootState } from "../../store/types";
-// import FormSelect from "../base/FormSelect";
-
-// const Price: React.FC = () => {
-//   const [isCurrencie, setIsCurrencie]= useState<boolean>(true)
-//   const  currencies = useSelector((state: RootState) => state.currencies.value);
-  
-//   const dispatch = useDispatch();
-//   const setCurrencie = (currencieId: number) => {
-//     dispatch(updateOrder({ currencieId }));
-//   };
-
-//   return (
-//     <>
-//             <FormSelect
-//               key={Math.random()}
-//               inputName="currencie"
-//               type="text"
-//               placeholder={"MDL"}
-//               title={"Price"}
-//               description={"Select currencie"}
-//               list={currencies}
-//               readonly={false}
-//               getInputValue={setCurrencie}
-//               isCurrencie={isCurrencie}
-//             />      
-//     </>
-//   );
-// };
-// export default Price;
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 

@@ -69,7 +69,7 @@ const FormSelect = ({
         <Label title={title} description={description} />       
       </Grid>
       {isCurrencie && (
-         <Grid item xs={10} sm={8} md={10} lg={8} >  
+         <Grid item xs={10} sm={8} md={10} lg={isCurrencie ? 4 : 8} >  
          <Input
              type={"number"}
              placeholder={"1200"}
@@ -77,10 +77,11 @@ const FormSelect = ({
              inputName={"price"}
              readonly={false}
              handleChange={handlePriceUpdate}
+             width={isCurrencie ? "270px" : "550px"}
            />         
        </Grid>
       )}
-      <Grid item xs={10} sm={8} md={10} lg={8} >  
+      <Grid item xs={10} sm={8} md={10} lg={isCurrencie ? 4 : 8} >  
         <Input
             type={type}
             placeholder={placeholder}
@@ -88,6 +89,7 @@ const FormSelect = ({
             inputName={inputName}
             readonly={readonly}
             openDropdown={openDropdown}
+            width={isCurrencie ? "270px" : "550px"}
           />
           {isOpen &&(
             <Dropdown  list={list} handleClick={handleClick} />

@@ -5,7 +5,7 @@ import { colors, fontSizes, radius } from "../../variables.style";
 export const Select = styled.div`
   margin-top: 10px;
   background-color: ${colors.inputBgColor};
-  width: 550px;
+  max-width: 550px;
   border-radius: ${radius.radiusS};
   @media (max-width: 600px) {
     width: 350px;

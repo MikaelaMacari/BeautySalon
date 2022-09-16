@@ -11,6 +11,7 @@ import Time from "./Time";
 import Price from "../base/Price";
 import { Button } from "../base";
 import { Link, useNavigate } from "react-router-dom";
+import { StyledLink } from "../../assets/styles/app.style";
 
 
 const SelectService: React.FC = () => {
@@ -44,7 +45,10 @@ const SelectService: React.FC = () => {
           />
          <Time />
          <Price />
-         <Button handleClick={handleClick} title={"Next step"} isNext={true}></Button></StyledForm>
+         <StyledLink to="/orders/step/2">
+          <Button  title={"Next step"} isNext={true}></Button>
+         </StyledLink>
+         </StyledForm>
       </FormContainer>
     </>
   );

@@ -11,6 +11,7 @@ font-family: ${fonts.primaryFont};
 font-size: ${fontSizes.sizeL};
 background-color: ${colors.secondaryBgColor};
 border: none;
+text-decoration: none;
 border-radius: 240px;
 cursor: pointer;
 &:hover {
