@@ -33,7 +33,7 @@ const NavbarCollapse = ({ extendNavbar, changeState }: INavbarCollapse) => {
         <NavbarLink to="/">
           <DropdownMenu />
         </NavbarLink>
-        <NavbarToggler onClick={changeState}>{extendNavbar ? <> &#215; </> : <> &#8801;</>}</NavbarToggler>
+        <NavbarToggler onClick={changeState}>{extendNavbar ? <> &#215; </> : <> &#8801;</>}/</NavbarToggler>
       </NavbarNav>
     </Collapse>
   );

@@ -2,10 +2,7 @@ import React from "react";
 
 import Divider from "@mui/material/Divider";
 
-import {
-  Option,
-  Select,
-} from "../../assets/styles/components/base/Dropdown.style";
+import { Option, Select } from "../../assets/styles/components/base/Dropdown.style";
 
 interface DropdownInterface {
   list?: { name: string; img?: string; id: number }[];
@@ -14,18 +11,19 @@ interface DropdownInterface {
 
 const Dropdown = ({ list, handleClick }: DropdownInterface) => {
   return (
-    <Select >
-      {list && list.map((item, index) => {
-        const isLast: boolean = index === list.length - 1;
-        return (
-          <div key={item.id}>
-            <Option key={index} onClick={() => handleClick(item)}>
-              {item.name} {item.id}
-            </Option>
-            {!isLast && <Divider key={`divider-${item.id}`} />}
-          </div>
-        );
-      })}
+    <Select>
+      {list &&
+        list.map((item, index) => {
+          const isLast: boolean = index === list.length - 1;
+          return (
+            <div key={item.id}>
+              <Option key={index} onClick={() => handleClick(item)}>
+                {item.name} {item.id}
+              </Option>
+              {!isLast && <Divider key={`divider-${item.id}`} />}
+            </div>
+          );
+        })}
     </Select>
   );
 };

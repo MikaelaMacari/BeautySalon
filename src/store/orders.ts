@@ -23,7 +23,7 @@ const newOrder = {
   date: "",
   startTime: "",
   endTime: "",
-  price: 0,  
+  price: 0,
   name: "",
   phone: "",
   email: "",
@@ -37,10 +37,7 @@ export const ordersSlice = createSlice({
   name: "orders",
   initialState,
   reducers: {
-    updateOrder: (
-      state: NewOrderStateInterface,
-      action: PayloadAction<Partial<OrdersInterface>>
-    ) => {
+    updateOrder: (state: NewOrderStateInterface, action: PayloadAction<Partial<OrdersInterface>>) => {
       return { ...state, value: { ...state.value, ...action.payload } };
     },
   },

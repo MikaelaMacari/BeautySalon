@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import Dropdown from "./Dropdown";
 import Input from "./Input";
 import Label from "./Label";
-import { updateOrder } from "../../store/orders";
-import { useDispatch } from "react-redux";
+import Error from "./Error";
 
 interface FormInterface {
   inputName: string;
@@ -19,7 +18,9 @@ interface FormInterface {
   readonly: boolean;
   getInputValue: (inputValue: number) => void;
   returnObject?: boolean;
-  isCurrencie?: boolean;
+  errorMessage: string;
+  error: boolean;
+  setError: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const FormSelect = ({
   inputName,
@@ -31,74 +32,50 @@ const FormSelect = ({
   readonly,
   getInputValue,
   returnObject = false,
-  isCurrencie
+  error,
+  errorMessage,
+  setError,
 }: FormInterface) => {
   const [value, setValue] = useState<string>("");
-  const [isOpen, setIsOpen]=useState<boolean>(false)
-  const [priceValue, setPriceValue] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const setPrice = (price: number) => {
-    dispatch(updateOrder({ price }));
+  const openDropdown = () => {
+    setIsOpen((currentState) => !currentState);
   };
-  const dispatch = useDispatch();
-
-
-  const handlePriceUpdate=(e:any) =>{
-    const price = e.target.value
-    setPriceValue(price);     
-    setPrice(price);
-  }
-  
-  const openDropdown = ()=>{
-    setIsOpen((currentState) => !currentState)
-  }
-  const handleClick = (value: any) => {   
+  const handleClick = (obj: any) => {
     openDropdown();
     if (returnObject) {
-      getInputValue(value);
+      getInputValue(obj);
     } else {
-      getInputValue(value.id);
+      getInputValue(obj.id);
     }
-    setValue(value.name);    
-   };
-
+    setValue(obj.name);
+    setError((currentState) => !currentState);
+  };
 
   return (
-    <Grid container spacing={2}> 
-      <Grid item xs={12} sm={2} md={1}  lg={2}> 
-        <Label title={title} description={description} />       
+    <Grid container spacing={2}>
+      <Grid item xs={12} sm={2} md={1} lg={2}>
+        <Label title={title} description={description} />
       </Grid>
-      {isCurrencie && (
-         <Grid item xs={10} sm={8} md={10} lg={isCurrencie ? 4 : 8} >  
-         <Input
-             type={"number"}
-             placeholder={"1200"}
-             value={priceValue}
-             inputName={"price"}
-             readonly={false}
-             handleChange={handlePriceUpdate}
-             width={isCurrencie ? "270px" : "550px"}
-           />         
-       </Grid>
-      )}
-      <Grid item xs={10} sm={8} md={10} lg={isCurrencie ? 4 : 8} >  
+      <Grid item xs={10} sm={8} md={10} lg={8}>
         <Input
-            type={type}
-            placeholder={placeholder}
-            value={value}
-            inputName={inputName}
-            readonly={readonly}
-            openDropdown={openDropdown}
-            width={isCurrencie ? "270px" : "550px"}
-          />
-          {isOpen &&(
-            <Dropdown  list={list} handleClick={handleClick} />
-          )}           
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          inputName={inputName}
+          readonly={readonly}
+          openDropdown={openDropdown}
+          width={"550px"}
+          error={error}
+        />
+        {isOpen && <Dropdown list={list} handleClick={handleClick} />}
+        {error && <Error errorMessage={errorMessage} />}
       </Grid>
-      <Grid item xs={2} sm={2}  md={1} lg={2} > 
-        <ExpandMoreIcon />       
+      <Grid item xs={2} sm={2} md={1} lg={2}>
+        <ExpandMoreIcon />
       </Grid>
-  </Grid>  
+    </Grid>
   );
 };
 

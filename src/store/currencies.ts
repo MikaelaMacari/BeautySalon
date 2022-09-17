@@ -14,10 +14,8 @@ export const currenciesSlice = createSlice({
   name: "currencies",
   initialState,
   reducers: {
-
     setCurrencie: (state: CurrenciesStateInterface, action: PayloadAction<CurrenciesInterface[]>) => {
       state.value = action.payload;
-
     },
   },
 });
