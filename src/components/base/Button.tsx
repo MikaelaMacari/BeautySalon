@@ -10,7 +10,7 @@ interface ButtonInterface {
 export const Button = ({ title, handleClick, isNext }: ButtonInterface) => {
   if (isNext) {
     return (
-      <StyledButton>
+      <StyledButton onClick={handleClick}>
         {title}
         <ChevronRightIcon />
       </StyledButton>

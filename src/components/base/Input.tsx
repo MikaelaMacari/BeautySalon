@@ -11,6 +11,8 @@ interface InputInterface {
   openDropdown?: () => void;
   width?: string;
   error?: any;
+  setError?: React.Dispatch<React.SetStateAction<boolean>>;
+  getValue?: (value: string | undefined) => void;
 }
 
 const Input = ({ inputName, type, placeholder, value, readonly, openDropdown, handleChange, width, error }: InputInterface) => {
@@ -24,7 +26,7 @@ const Input = ({ inputName, type, placeholder, value, readonly, openDropdown, ha
       onClick={openDropdown}
       onChange={handleChange}
       width={width}
-      error={error}
+      // error={error}
     />
   );
 };

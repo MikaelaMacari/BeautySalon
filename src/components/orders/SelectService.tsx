@@ -11,65 +11,108 @@ import Time from "./Time";
 import Price from "../base/Price";
 import { Button } from "../base";
 import { useNavigate } from "react-router-dom";
-import { StyledLink } from "../../assets/styles/app.style";
 import { updateOrder } from "../../store/orders";
+import { useForm } from "react-hook-form";
+import SelectServiceForm from "./SelectServiceForm";
 
-const SelectService: React.FC = () => {
-  // const [serviceCategoryError, setServiceCategoryError] = useState<boolean>(false);
-  // const [serviceError, setServiceError] = useState<boolean>(false);
-  // const [masterError, setMasterError] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+interface SelectServiceInterface {
+  setError?: React.Dispatch<React.SetStateAction<boolean>>;
+}
+interface inputValuesInterface {
+  // serviceCategory: string;
+  // service: string;
+  // master: string;
+  // date: string;
+  // startTime: string;
+  // endTime: string;
+  // price: number;
+  // currencie: string;
+}
+const SelectService = () => {
+  const inputValues: inputValuesInterface = {
+    // serviceCategory: "",
+    // service: "",
+    // master: "",
+    // date: "",
+    // startTime: "",
+    // endTime: "",
+    // price: 0,
+    // currencie: "",
+  };
+  const [inputValue, setInputValue] = useState<inputValuesInterface>(inputValues);
+  const [serviceCategoryError, setServiceCategoryError] = useState<boolean>(false);
+  const [serviceError, setServiceError] = useState<boolean>(false);
+  const [masterError, setMasterError] = useState<boolean>(false);
+  const [formError, setFormError] = useState<boolean>(false);
   const [dateError, setDateError] = useState<boolean>(false);
   const [timeError, setTimeError] = useState<boolean>(false);
   const [priceError, setPriceError] = useState<boolean>(false);
   const [currencieError, setCurrencieError] = useState<boolean>(false);
-  const newOrder = useSelector((state: RootState) => state.orders.value);
+  // const newOrder = useSelector((state: RootState) => state.orders.value);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const setCurrencie = (currencieId: number) => {
     dispatch(updateOrder({ currencieId }));
   };
   const validateInputs = () => {
-    console.log(newOrder);
-    // if (newOrder.serviceCategoryId === 0) {
+    // console.log(newOrder);
+    console.log("INPUT-VALUE: ", inputValue);
+    // if (inputValue === "") {
     //   setServiceCategoryError((currentState) => !currentState);
-    // }
-    // if (newOrder.serviceId === 0) {
     //   setServiceError((currentState) => !currentState);
     // }
-    // if (newOrder.masterId === 0) {
+    // if (!newOrder.serviceCategoryId) {
+    //   setServiceCategoryError((currentState) => !currentState);
+    // }
+    // if (!newOrder.serviceId) {
+    //   setServiceError((currentState) => !currentState);
+    // }
+    // if (!newOrder.masterId) {
     //   setMasterError((currentState) => !currentState);
     // }
-    if (newOrder.date === "") {
-      setDateError((currentState) => !currentState);
-    }
-    if (newOrder.startTime === "") {
-      setTimeError((currentState) => !currentState);
-    }
-    if (newOrder.price === 0) {
-      setPriceError((currentState) => !currentState);
-    }
-    if (!newOrder.currencieId) {
-      setCurrencieError((currentState) => !currentState);
-    }
+    // if (newOrder.date === "") {
+    //   setDateError((currentState) => !currentState);
+    // }
+    // if (newOrder.startTime === "") {
+    //   setTimeError((currentState) => !currentState);
+    // }
+    // if (newOrder.price === 0) {
+    //   setPriceError((currentState) => !currentState);
+    // }
+    // if (!newOrder.currencieId) {
+    //   setCurrencieError((currentState) => !currentState);
+    // }
   };
-  const handleSubmit = (e: React.FormEvent<EventTarget>) => {
-    e.preventDefault();
-    validateInputs();
-  };
+  // const handleSubmit = (e: React.FormEvent<EventTarget>) => {
+  //   e.preventDefault();
+  //   validateInputs();
+  // };
 
   const handleClick = (e: React.FormEvent<EventTarget>) => {
     e.preventDefault();
     // console.log(newOrder);
     navigate(`/orders/step/2`);
   };
+  const { handleSubmit } = useForm();
+  // console.log(newOrder);
 
   return (
     <>
       <Header />
       <FormContainer>
-        <StyledForm onSubmit={handleSubmit} error={error}>
-          <SelectRow />
+        <SelectServiceForm />
+        {/* <StyledForm
+          onSubmit={handleSubmit((data) => {
+            console.log(data);
+          })}
+          error={formError}
+        >
+          <SelectRow
+            serviceCategoryError={serviceCategoryError}
+            serviceError={serviceError}
+            masterError={masterError}
+            setInputValue={setInputValue}
+          />
           <Date
             title={"Date"}
             description={"Select date"}
@@ -81,11 +124,11 @@ const SelectService: React.FC = () => {
             errorMessage={"Please select a date!"}
           />
           <Time error={timeError} />
-          <Price priceError={priceError} currencieError={currencieError} getInputValue={setCurrencie} />
-          {/* <StyledLink to="/orders/step/2"> */}
-          <Button title={"Next step"} isNext={true}></Button>
-          {/* </StyledLink> */}
-        </StyledForm>
+          <Price priceError={priceError} currencieError={currencieError} getInputValue={setCurrencie} /> */}
+        {/* <StyledLink to="/orders/step/2"> */}
+        {/* <Button title={"Next step"} isNext={true}></Button> */}
+        {/* </StyledLink> */}
+        {/* </StyledForm> */}
       </FormContainer>
     </>
   );

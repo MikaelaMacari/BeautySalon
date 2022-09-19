@@ -20,7 +20,7 @@ interface FormInterface {
   returnObject?: boolean;
   errorMessage: string;
   error: boolean;
-  setError: React.Dispatch<React.SetStateAction<boolean>>;
+  setInputValue?: any;
 }
 const FormSelect = ({
   inputName,
@@ -34,8 +34,9 @@ const FormSelect = ({
   returnObject = false,
   error,
   errorMessage,
-  setError,
+  setInputValue,
 }: FormInterface) => {
+  const [arrayValues, setArrayValues] = useState<any>([]);
   const [value, setValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -50,7 +51,13 @@ const FormSelect = ({
       getInputValue(obj.id);
     }
     setValue(obj.name);
-    setError((currentState) => !currentState);
+    // setInputValue((prevValue: any) => ({
+    //   ...prevValue,
+    //   ...{ name: obj.name },
+    // }));
+    setInputValue((previousState: any) => {
+      return { ...previousState, name: obj.name };
+    });
   };
 
   return (

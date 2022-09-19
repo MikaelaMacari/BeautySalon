@@ -5,13 +5,17 @@ import { updateOrder } from "../../store/orders";
 import { RootState } from "../../store/types";
 import FormSelect from "../base/FormSelect";
 
-const SelectRow = () => {
+interface SelectRowInterface {
+  serviceCategoryError: boolean;
+  serviceError: boolean;
+  masterError: boolean;
+  setInputValue: any;
+}
+const SelectRow = ({ serviceCategoryError, serviceError, masterError, setInputValue }: SelectRowInterface) => {
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
   const masters = useSelector((state: RootState) => state.masters.value);
-  const [serviceCategoryError, setServiceCategoryError] = useState<boolean>(false);
-  const [serviceError, setServiceError] = useState<boolean>(false);
-  const [masterError, setMasterError] = useState<boolean>(false);
+
   const dispatch = useDispatch();
   const setCategory = (serviceCategoryId: number) => {
     dispatch(updateOrder({ serviceCategoryId }));
@@ -23,7 +27,9 @@ const SelectRow = () => {
   const setMaster = (masterId: number) => {
     dispatch(updateOrder({ masterId }));
   };
-
+  const setPrice = (price: number) => {
+    dispatch(updateOrder({ price }));
+  };
   const formSelectRows = [
     {
       id: 1,
@@ -37,7 +43,6 @@ const SelectRow = () => {
       action: setCategory,
       errorMessage: "Please select a service category",
       error: serviceCategoryError,
-      setError: setServiceCategoryError,
     },
     {
       id: 2,
@@ -51,7 +56,6 @@ const SelectRow = () => {
       action: setService,
       errorMessage: "Please select a service",
       error: serviceError,
-      setError: setServiceError,
     },
     {
       id: 3,
@@ -65,7 +69,6 @@ const SelectRow = () => {
       action: setMaster,
       errorMessage: "Please select a master",
       error: masterError,
-      setError: setMasterError,
     },
   ];
 
@@ -84,7 +87,7 @@ const SelectRow = () => {
           getInputValue={row.action}
           errorMessage={row.errorMessage}
           error={row.error}
-          setError={row.setError}
+          setInputValue={setInputValue}
         />
       ))}
     </>
