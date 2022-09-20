@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledForm = styled.form<{ error: boolean }>`
+export const StyledForm = styled.form<{ error?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;

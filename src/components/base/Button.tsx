@@ -4,10 +4,11 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { StyledButton } from "../../assets/styles/components/base/Button.style";
 interface ButtonInterface {
   title: string;
-  handleClick?: (e: React.FormEvent<EventTarget>) => void;
-  isNext: boolean;
+  handleClick?: () => void;
+  isNext?: boolean;
+  isBack?: boolean;
 }
-export const Button = ({ title, handleClick, isNext }: ButtonInterface) => {
+export const Button = ({ title, handleClick, isNext, isBack }: ButtonInterface) => {
   if (isNext) {
     return (
       <StyledButton onClick={handleClick}>
@@ -15,13 +16,14 @@ export const Button = ({ title, handleClick, isNext }: ButtonInterface) => {
         <ChevronRightIcon />
       </StyledButton>
     );
-  } else if (!isNext) {
+  } else if (!isNext && isBack) {
     return (
-      <StyledButton>
+      <StyledButton onClick={handleClick} isBack={isBack}>
         <ChevronLeftIcon />
         {title}
       </StyledButton>
     );
+  } else {
+    return <StyledButton onClick={handleClick}> {title} </StyledButton>;
   }
-  return <StyledButton> {title} </StyledButton>;
 };

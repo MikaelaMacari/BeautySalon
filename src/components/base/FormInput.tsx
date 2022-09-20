@@ -1,5 +1,4 @@
 import React from "react";
-import { UseFormRegister } from "react-hook-form";
 import Grid from "@mui/material/Grid";
 import Label from "./Label";
 import Error from "./Error";

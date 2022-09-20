@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { colors, fonts, fontSizes } from "../../variables.style";
-
-export const StyledButton = styled.button`
-  padding: 12px 120px;
+interface Paddings {
+  isNext?: boolean;
+  isBack?: boolean;
+}
+export const StyledButton = styled.button<Paddings>`
+  padding: ${(props) => (props.isNext && "12px 120px") || (props.isBack && "12px 50px") || "12px 120px"};
   gap: 5px;
   display: flex;
   justify-content: center;

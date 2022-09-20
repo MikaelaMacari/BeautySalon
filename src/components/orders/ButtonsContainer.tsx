@@ -1,11 +1,7 @@
 import React from "react";
-const ButtonsContainer: React.FC = () => {
-  return (
-    <div className="ButtonsContainer">
-      <h1>Card Container </h1>
-      <hr />
-    </div>
-  );
+import { Container } from "../../assets/styles/components/base/ButtonsContainer";
+const ButtonsContainer = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+  return <Container>{children}</Container>;
 };
 
 export default ButtonsContainer;
