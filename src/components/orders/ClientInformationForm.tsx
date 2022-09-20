@@ -98,7 +98,7 @@ const ClientInformationForm = () => {
           </Grid>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6}>
-              <Button title={"Back"} isNext={false} />
+              <Button title={"Back"} isNext={false} isBack={true} />
             </Grid>
             <Grid item xs={12} md={6}>
               <Button title={"Next step"} isNext={true} />

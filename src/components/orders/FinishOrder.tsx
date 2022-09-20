@@ -8,7 +8,8 @@ import { Button } from "../base";
 import { StyledLink } from "../../assets/styles/app.style";
 import ButtonsContainer from "./ButtonsContainer";
 import { useNavigate } from "react-router-dom";
-import Popup from "./Modal";
+import Popup from "../base/Modal";
+import Modal from "../base/Modal";
 
 const FinishOrder: React.FC = () => {
   const services = useSelector((state: RootState) => state.services.value);
@@ -17,9 +18,9 @@ const FinishOrder: React.FC = () => {
   const newOrder = useSelector((state: RootState) => state.orders.value);
 
   const navigate = useNavigate();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [openModal, setOpenModal] = React.useState(false);
+  const handleOpen = () => setOpenModal((prevState) => !prevState);
+  // const handleClose = () => setOpen(false);
   // const getName = (array: any, id: any) => {
   //   const item = array.find((item: any) => item.id === Number(id));
   //   return item?.name;
@@ -48,9 +49,10 @@ const FinishOrder: React.FC = () => {
         <Row title="comments" description={`${newOrder.comment}`} />
         <ButtonsContainer>
           <Button title={"Back"} isBack={true} handleClick={() => navigate(-1)} />
-          <Button title={"Create Order"} />
+          <Button title={"Create Order"} handleClick={handleOpen} />
         </ButtonsContainer>
         {/* {open && <Popup open={open} handleClose={handleClose} />} */}
+        <Modal openModal={openModal} setOpenModal={setOpenModal} />
       </Container>
     </>
   );
