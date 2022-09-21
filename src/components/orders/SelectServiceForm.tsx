@@ -13,6 +13,8 @@ import { updateOrder } from "../../store/orders";
 import Error from "../base/Error";
 import { StyledLink } from "../../assets/styles/app.style";
 import { useNavigate } from "react-router-dom";
+import Date from "../base/Date";
+import Time from "../base/Time";
 enum GenderEnum {
   female = "female",
   male = "male",
@@ -154,29 +156,21 @@ const SelectServiceForm = () => {
             </Grid>
           </Grid>
           {/* DATE */}
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2}>
-              <Label title={"Date"} description={"Select a date"} />
-            </Grid>
-            <Grid item xs={12} sm={10} md={10}>
-              <input type="date" {...register("date", { required: "Please select a date" })} />
-              <Error errorMessage={errors?.date?.message} />
-            </Grid>
-          </Grid>
-          {/* TIME */}
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2} lg={2}>
-              <Label title={"Time"} description={"Choose time"} />
-            </Grid>
-            <Grid item xs={10} sm={5} md={4} lg={4}>
-              <input type="time" {...register("startTime", { required: "Please select a starting hour!" })} />
-              <Error errorMessage={errors?.startTime?.message} />
-            </Grid>
-            <Grid item xs={10} sm={5} md={4} lg={4}>
-              <input type="time" {...register("endTime", { required: "Please select an ending hour!" })} />
-              <Error errorMessage={errors?.endTime?.message} />
-            </Grid>
-          </Grid>
+          <Date
+            title="Date"
+            description="Select a date"
+            inputName="date"
+            placeholder="12.07.2022"
+            register={register}
+            errors={errors}
+            type="date"
+            validationSchema={{
+              required: "Date field is required!",
+            }}
+            required
+          />
+          <Time register={register} errors={errors} />
+
           {/* PRICE */}
           <Grid container spacing={2}>
             <Grid item xs={12} sm={2} md={1} lg={2}>

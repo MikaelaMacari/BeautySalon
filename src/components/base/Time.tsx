@@ -8,10 +8,19 @@ import Input from "./Input";
 import Error from "./Error";
 
 interface TimeInterface {
-  error: boolean;
+  required?: any;
+  width?: string;
+  validationSchema?: any;
+  errors?: any;
+  register?: any;
+  type?: string;
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  inputName?: any;
 }
 
-const Time = ({ error }: TimeInterface) => {
+const Time = ({ inputName, register, errors, required, type, placeholder, width, validationSchema, title, description }: TimeInterface) => {
   const dispatch = useDispatch();
 
   const [startTime, setStartTimeValue] = useState<string>("");
@@ -41,30 +50,28 @@ const Time = ({ error }: TimeInterface) => {
         <Label title={"Time"} description={"Choose time"} />
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
-        {/* <Input
-          type={"time"}
-          placeholder={"15:45"}
-          value={startTime}
+        <Input
+          id={inputName}
           inputName={"startTime"}
-          readonly={false}
-          handleChange={startTimeUpdate}
+          type="time"
+          placeholder="15:45"
+          register={register}
+          validationSchema={{ required: "Please select a starting hour!" }}
           width="270px"
-          error={error}
-        /> */}
-        {error && <Error errorMessage="Please choose a starting hour!" />}
+        />
+        {errors && <Error errorMessage={errors[inputName]?.message} />}
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
-        {/* <Input
-          type={"time"}
-          placeholder={"17:45"}
-          value={endTime}
+        <Input
+          id={inputName}
           inputName={"endTime"}
-          readonly={false}
-          handleChange={endTimeUpdate}
+          type="time"
+          placeholder="17:00"
+          register={register}
+          validationSchema={{ required: "Please select an ending hour!" }}
           width="270px"
-          error={error}
-        /> */}
-        {error && <Error errorMessage="Please choose an ending hour!" />}
+        />
+        {errors && <Error errorMessage={errors[inputName]?.message} />}
       </Grid>
     </Grid>
   );
