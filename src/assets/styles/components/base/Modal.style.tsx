@@ -20,7 +20,7 @@ export const StyledModal = styled.div`
   position: relative;
   z-index: 10;
   border-radius: ${radius.radiusS};
-  padding: 40px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -43,11 +43,10 @@ export const OutlinedButton = styled.button`
   border: 1px solid ${colors.primaryTextColor};
   border-radius: 4px;
   color: ${colors.primaryTextColor};
-  background: transparent;
+  background: ${colors.secondaryBgColor};
   cursor: pointer;
   &:hover {
-    background-color: ${colors.primaryTextColor};
-    color: ${colors.secondaryBgColor};
+    background-color: #f4f4f4;
     transition: 0.2s ease-in;
   }
 `;
@@ -57,10 +56,9 @@ export const PrimaryButton = styled.button`
   border-radius: 4px;
   color: ${colors.secondaryBgColor};
   background: ${colors.primaryTextColor};
+  cursor: pointer;
   &:hover {
-    background: transparent;
-    color: ${colors.primaryTextColor};
-    border: 1px solid ${colors.primaryTextColor};
+    background: #413fc8;
     transition: 0.2s ease-in;
   }
 `;

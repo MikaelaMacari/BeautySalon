@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { animated, SpringValue, useSpring } from "react-spring";
+import { StyledLink } from "../../assets/styles/app.style";
 import { Background, Description, OutlinedButton, PrimaryButton, StyledModal, Title } from "../../assets/styles/components/base/Modal.style";
 import ButtonsContainer from "../orders/ButtonsContainer";
 interface ModalInterface {
@@ -21,8 +21,12 @@ const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
             <Title>Order #1234 succesfully created</Title>
             <Description>What do you like to do next?</Description>
             <ButtonsContainer>
-              <OutlinedButton>Go to main page</OutlinedButton>
-              <PrimaryButton>Create new order</PrimaryButton>
+              <StyledLink to="/">
+                <OutlinedButton>Go to main page</OutlinedButton>
+              </StyledLink>
+              <StyledLink to="/orders/step/1">
+                <PrimaryButton>Create new order</PrimaryButton>
+              </StyledLink>
             </ButtonsContainer>
           </StyledModal>
         </Background>

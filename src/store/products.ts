@@ -17,39 +17,8 @@ export const productsSlice = createSlice({
     setProducts: (state: ProductsStateInterface, action: PayloadAction<ProductsInterface[]>) => {
       state.value = action.payload;
     },
-    getProductById: (state: ProductsStateInterface, action: PayloadAction<ProductsInterface[]>) => {
-      const actionId = action.payload.map((item) => item.id);
-
-      const stateId = state.value.map((item) => item.id);
-      state.value.map((item) => {
-        if (stateId !== actionId) {
-          return item;
-        } else {
-          return null;
-        }
-      });
-      console.log("STATE----------> ", state);
-      console.log("ACTION----------> ", action);
-      console.log("PAYLOAD----------> ", action.payload);
-
-      console.log("ACTION ID----------> ", actionId);
-      console.log("STATE ID----------> ", stateId);
-    },
-    // todo make getter by id
-    // getProductById: (
-    //   state: ProductsStateInterface,
-    //   { payload }: Payload<number>
-    // ) => {
-    //   const productIndex = state.value.findIndex(
-    //     (item) => item.id === payload
-    //   );
-    //   if (productIndex !== -1) {
-    //     return state.value[productIndex];
-    //   }
-    //   return null;
-    // },
   },
 });
 
-export const { setProducts, getProductById } = productsSlice.actions;
+export const { setProducts } = productsSlice.actions;
 export default productsSlice.reducer;

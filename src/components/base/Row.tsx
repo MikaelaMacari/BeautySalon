@@ -9,7 +9,6 @@ const Row = ({ title, description }: RowInterface) => {
   return (
     <StyledRow>
       <Title>{title}</Title>
-
       <Description>{description}</Description>
     </StyledRow>
   );

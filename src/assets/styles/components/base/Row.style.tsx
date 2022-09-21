@@ -18,4 +18,7 @@ export const Description = styled.div`
   font-size: ${fontSizes.sizeXL};
   color: ${colors.secondaryTextColor};
   text-align: right;
+  width: 10em;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;

@@ -5,10 +5,8 @@ import Header from "./Header";
 import Container from "@mui/material/Container";
 import Row from "../base/Row";
 import { Button } from "../base";
-import { StyledLink } from "../../assets/styles/app.style";
 import ButtonsContainer from "./ButtonsContainer";
 import { useNavigate } from "react-router-dom";
-import Popup from "../base/Modal";
 import Modal from "../base/Modal";
 
 const FinishOrder: React.FC = () => {
@@ -18,31 +16,34 @@ const FinishOrder: React.FC = () => {
   const newOrder = useSelector((state: RootState) => state.orders.value);
 
   const navigate = useNavigate();
+
   const [openModal, setOpenModal] = React.useState(false);
   const handleOpen = () => setOpenModal((prevState) => !prevState);
-  // const handleClose = () => setOpen(false);
-  // const getName = (array: any, id: any) => {
-  //   const item = array.find((item: any) => item.id === Number(id));
-  //   return item?.name;
-  // };
+
   const getValueById = (array: any, id: any) => {
     return array.find((item: any) => item.id === Number(id));
   };
-  const getName = (array: any, id: any) => {
-    return getValueById(array, id).name;
+  const getServiceName = () => {
+    return getValueById(services, newOrder.serviceId).name;
   };
-  const serviceName = getName(services, newOrder.serviceId);
-  const masterName = getName(masters, newOrder.masterId);
-  const currencieName = getName(currencies, newOrder.currencieId);
+  const getMasterName = () => {
+    return getValueById(masters, newOrder.masterId).name;
+  };
+  const getCurrencieName = () => {
+    return getValueById(currencies, newOrder.currencieId).name;
+  };
+  // const serviceName = getServiceName();
+  // const masterName = getMasterName();
+  // const currencieName = getCurrencieName();
 
   return (
     <>
       <Header />
       <Container maxWidth="sm">
-        <Row title="Service" description={`${serviceName}`} />
-        <Row title="Master" description={`${masterName}`} />
+        <Row title="Service" description={`${getServiceName()}`} />
+        <Row title="Master" description={`${getMasterName()}`} />
         <Row title="date/time" description={`${newOrder.date} ${newOrder.startTime}-${newOrder.endTime}`} />
-        <Row title="price" description={`${newOrder.price} ${currencieName}`} />
+        <Row title="price" description={`${newOrder.price} ${getCurrencieName()}`} />
         <Row title="client name" description={`${newOrder.name}`} />
         <Row title="client phone" description={`${newOrder.phone}`} />
         <Row title="client email" description={`${newOrder.email}`} />
@@ -51,7 +52,6 @@ const FinishOrder: React.FC = () => {
           <Button title={"Back"} isBack={true} handleClick={() => navigate(-1)} />
           <Button title={"Create Order"} handleClick={handleOpen} />
         </ButtonsContainer>
-        {/* {open && <Popup open={open} handleClose={handleClose} />} */}
         <Modal openModal={openModal} setOpenModal={setOpenModal} />
       </Container>
     </>

@@ -7,7 +7,7 @@ export const currencies: CurrenciesInterface[] = [
   },
   {
     id: 2,
-    name: "Euro",
+    name: "EURO",
   },
   {
     id: 3,
