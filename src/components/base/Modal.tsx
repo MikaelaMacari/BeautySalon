@@ -20,7 +20,7 @@ const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
           <StyledModal>
             <Title>Order #1234 succesfully created</Title>
             <Description>What do you like to do next?</Description>
-            <ButtonsContainer>
+            <ButtonsContainer gap={false}>
               <StyledLink to="/">
                 <OutlinedButton>Go to main page</OutlinedButton>
               </StyledLink>

@@ -66,7 +66,7 @@ const Price = ({ priceError, currencieError, returnObject = false, getInputValue
       </Grid>
       {isCurrencie && (
         <Grid item xs={10} sm={8} md={10} lg={4}>
-          <Input
+          {/* <Input
             type={"number"}
             placeholder={"1200"}
             value={priceValue}
@@ -75,12 +75,12 @@ const Price = ({ priceError, currencieError, returnObject = false, getInputValue
             handleChange={handlePriceUpdate}
             width={"270px"}
             error={priceError}
-          />
+          /> */}
           {priceError && <Error errorMessage={"Please select a price!"} />}
         </Grid>
       )}
       <Grid item xs={10} sm={8} md={10} lg={4}>
-        <Input
+        {/* <Input
           type={priceInput.type}
           placeholder={priceInput.placeholder}
           value={value}
@@ -89,7 +89,7 @@ const Price = ({ priceError, currencieError, returnObject = false, getInputValue
           openDropdown={openDropdown}
           width={"270px"}
           error={currencieError}
-        />
+        /> */}
 
         {isOpen && <Dropdown list={priceInput.list} handleClick={handleClick} />}
         {currencieError && <Error errorMessage={"Please choose a currencie!"} />}

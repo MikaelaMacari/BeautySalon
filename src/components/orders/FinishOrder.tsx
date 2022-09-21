@@ -48,7 +48,7 @@ const FinishOrder: React.FC = () => {
         <Row title="client phone" description={`${newOrder.phone}`} />
         <Row title="client email" description={`${newOrder.email}`} />
         <Row title="comments" description={`${newOrder.comment}`} />
-        <ButtonsContainer>
+        <ButtonsContainer gap={false}>
           <Button title={"Back"} isBack={true} handleClick={() => navigate(-1)} />
           <Button title={"Create Order"} handleClick={handleOpen} />
         </ButtonsContainer>

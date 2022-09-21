@@ -18,7 +18,7 @@ export const Button = ({ title, handleClick, isNext, isBack }: ButtonInterface) 
     );
   } else if (!isNext && isBack) {
     return (
-      <StyledButton onClick={handleClick} isBack={isBack}>
+      <StyledButton onClick={handleClick} isBack>
         <ChevronLeftIcon />
         {title}
       </StyledButton>

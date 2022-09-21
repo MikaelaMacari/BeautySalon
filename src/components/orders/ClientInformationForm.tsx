@@ -10,6 +10,11 @@ import { Button } from "../base";
 import { updateOrder } from "../../store/orders";
 import Error from "../base/Error";
 import { useNavigate } from "react-router-dom";
+import FormInput from "../base/FormInput";
+import Textarea from "../base/Textarea";
+import ButtonsContainer from "./ButtonsContainer";
+import { StyledLink } from "../../assets/styles/app.style";
+import { Container } from "../../assets/styles/components/base/ButtonsContainer";
 interface FormInputInterface {
   name: string;
   phone: string;
@@ -35,75 +40,74 @@ const ClientInformationForm = () => {
     updateNewOrder(data);
     navigate(`/orders/step/3`);
   };
+  const formInputRows = [
+    {
+      id: 1,
+      type: "text",
+      inputName: "name",
+      placeholder: "Vasile Alexandri",
+      title: "Name",
+      description: "Enter your name",
+      validationSchema: {
+        required: "Name field is required!",
+      },
+    },
+    {
+      id: 2,
+      type: "tel",
+      inputName: "phone",
+      placeholder: "+373(_______)",
+      title: "Phone",
+      description: "Enter your phone",
+      validationSchema: {
+        required: "Phone field is required!",
+        pattern: {
+          value:
+            /((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/g,
+          message: "Please enter a valid phone!",
+        },
+      },
+    },
 
+    {
+      id: 3,
+      type: "email",
+      inputName: "email",
+      placeholder: "client@power-beauty.md",
+      title: "E-mail",
+      description: "Enter your email",
+      validationSchema: {
+        required: "Email field is required!",
+        pattern: {
+          value:
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          message: "Please enter a valid email!",
+        },
+      },
+    },
+  ];
   return (
     <>
       <FormContainer>
         <StyledForm error={false} onSubmit={handleSubmit(onSubmit)}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2}>
-              <Label title="Name" description="Enter your name" />
-            </Grid>
-            <Grid item xs={12} sm={10} md={10}>
-              <input type="text" placeholder="Vasile Alexandri" {...register("name", { required: "Name field is required!" })} />
-              <Error errorMessage={errors?.name?.message} />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2}>
-              <Label title="Phone" description="Enter your phone" />
-            </Grid>
-            <Grid item xs={12} sm={10} md={10}>
-              <input
-                type="text"
-                placeholder="+373(_______)"
-                {...register("phone", {
-                  required: "Phone is required!",
-                  pattern: {
-                    value:
-                      /((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/g,
-                    message: "Please enter a valid phone!",
-                  },
-                })}
-              />
-              <Error errorMessage={errors?.phone?.message} />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2}>
-              <Label title="E-mail" description="Enter your email" />
-            </Grid>
-            <Grid item xs={12} sm={10} md={10}>
-              <input
-                type="email"
-                {...register("email", {
-                  required: "Email is required!",
-                  pattern: {
-                    value:
-                      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                    message: "Please enter a valid email!",
-                  },
-                })}
-              />
-              <Error errorMessage={errors?.email?.message} />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={2} md={2}>
-              <Label title="Comments" description="Enter your email" />
-            </Grid>
-            <Grid item xs={12} sm={10} md={10}>
-              <textarea {...register("comment")} />
-            </Grid>
-          </Grid>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Button title={"Back"} isNext={false} isBack={true} />
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Button title={"Next step"} isNext={true} />
-            </Grid>
-          </Grid>
+          {formInputRows.map((row) => (
+            <FormInput
+              key={row.id}
+              type={row.type}
+              inputName={row.inputName}
+              placeholder={row.placeholder}
+              title={row.title}
+              description={row.description}
+              errors={errors}
+              register={register}
+              validationSchema={row.validationSchema}
+            />
+          ))}
+          <Textarea title="Comments" inputName="comment" placeholder="Add some comments here.This field is optional" register={register} />
+          <ButtonsContainer gap={true}>
+            <Button title={"Back"} isNext={false} isBack={true} handleClick={() => navigate(-1)} />
+            <Button title={"Next step"} isNext={true} />
+          </ButtonsContainer>
         </StyledForm>
       </FormContainer>
     </>

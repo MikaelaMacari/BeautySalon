@@ -41,7 +41,7 @@ const Time = ({ error }: TimeInterface) => {
         <Label title={"Time"} description={"Choose time"} />
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
-        <Input
+        {/* <Input
           type={"time"}
           placeholder={"15:45"}
           value={startTime}
@@ -50,11 +50,11 @@ const Time = ({ error }: TimeInterface) => {
           handleChange={startTimeUpdate}
           width="270px"
           error={error}
-        />
+        /> */}
         {error && <Error errorMessage="Please choose a starting hour!" />}
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
-        <Input
+        {/* <Input
           type={"time"}
           placeholder={"17:45"}
           value={endTime}
@@ -63,7 +63,7 @@ const Time = ({ error }: TimeInterface) => {
           handleChange={endTimeUpdate}
           width="270px"
           error={error}
-        />
+        /> */}
         {error && <Error errorMessage="Please choose an ending hour!" />}
       </Grid>
     </Grid>

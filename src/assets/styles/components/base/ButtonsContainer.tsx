@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.div<{ gap: boolean }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0;
-  padding: 0;
+  gap: ${(props) => (props.gap ? "4.5rem" : "")};
 `;

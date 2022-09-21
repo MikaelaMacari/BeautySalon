@@ -4,16 +4,18 @@ import Tooltip from "@mui/material/Tooltip";
 import { StyledLabel, Title, TooltipText } from "../../assets/styles/components/base/Label.style";
 
 export interface LabelInterface {
-  title: string;
-  description: string;
+  title?: string;
+  description?: any;
 }
 const Label = ({ title, description }: LabelInterface) => {
   return (
     <StyledLabel>
       <Title>{title}</Title>
-      <Tooltip title={description} placement="left" arrow>
-        <TooltipText>hint</TooltipText>
-      </Tooltip>
+      {description && (
+        <Tooltip title={description} placement="left" arrow>
+          <TooltipText>hint</TooltipText>
+        </Tooltip>
+      )}
     </StyledLabel>
   );
 };

@@ -5,7 +5,7 @@ interface Paddings {
   isBack?: boolean;
 }
 export const StyledButton = styled.button<Paddings>`
-  padding: ${(props) => (props.isNext && "12px 120px") || (props.isBack && "12px 50px") || "12px 120px"};
+  padding: ${(props) => (props.isNext && "12px 120px") || (props.isBack && "12px 50px") || "12px 100px"};
   gap: 5px;
   display: flex;
   justify-content: center;

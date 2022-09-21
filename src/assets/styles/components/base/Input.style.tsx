@@ -7,6 +7,7 @@ export const StyledInput = styled.input`
   width: ${(props) => (props.width ? props.width : "550px")};
   border-radius: ${radius.radiusS};
   padding: 12px 15px;
+  border: none;
 
   &:focus {
     outline: none;

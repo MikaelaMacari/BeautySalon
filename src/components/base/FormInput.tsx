@@ -5,37 +5,35 @@ import Error from "./Error";
 import Input from "./Input";
 
 type InputProps = {
+  required?: any;
+  width?: string;
+  validationSchema: any;
   errors: any;
-  // register: UseFormRegister<FormInputInterface>;
   register: any;
   type: string;
   title: string;
   description: string;
   placeholder: string;
   inputName: string;
-  errorMessage: string;
 };
 
-const FormInput = ({ register, errors, type, title, description, placeholder, inputName, errorMessage }: InputProps) => {
-  return (
-    <>
-      <Grid container spacing={2}>
-        <Grid item xs={12} sm={2} md={2}>
-          <Label title={title} description={description} />
-        </Grid>
-        <Grid item xs={12} sm={10} md={10}>
-          <Input
-            {...register({ inputName }, { required: { errorMessage } })}
-            type={type}
-            placeholder={placeholder}
-            inputName={inputName}
-            width={"550px"}
-          />
-          <Error errorMessage={errors?.date?.message} />
-        </Grid>
-      </Grid>
-    </>
-  );
-};
-
+const FormInput = ({ inputName, register, errors, required, type, placeholder, width, validationSchema, title, description }: InputProps) => (
+  <Grid container spacing={2}>
+    <Grid item xs={12} sm={2} md={2}>
+      <Label title={title} description={description} />
+    </Grid>
+    <Grid item xs={12} sm={10} md={10}>
+      <Input
+        id={inputName}
+        inputName={inputName}
+        type={type}
+        placeholder={placeholder}
+        register={register}
+        validationSchema={validationSchema}
+        width={width}
+      />
+      {errors && <Error errorMessage={errors[inputName]?.message} />}
+    </Grid>
+  </Grid>
+);
 export default FormInput;

@@ -66,7 +66,7 @@ const FormSelect = ({
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={8}>
-        <Input
+        {/* <Input
           type={type}
           placeholder={placeholder}
           value={value}
@@ -75,7 +75,7 @@ const FormSelect = ({
           openDropdown={openDropdown}
           width={"550px"}
           error={error}
-        />
+        /> */}
         {isOpen && <Dropdown list={list} handleClick={handleClick} />}
         {error && <Error errorMessage={errorMessage} />}
       </Grid>

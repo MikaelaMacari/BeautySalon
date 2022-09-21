@@ -32,7 +32,7 @@ const Date = ({ inputName, type, placeholder, title, description, readonly, erro
 
   return (
     <Grid container spacing={2}>
-      <Grid item xs={12} sm={2} md={2}>
+      {/* <Grid item xs={12} sm={2} md={2}>
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={12} sm={10} md={10}>
@@ -46,7 +46,7 @@ const Date = ({ inputName, type, placeholder, title, description, readonly, erro
           error={error}
         />
         {error && <Error errorMessage={errorMessage} />}
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };
