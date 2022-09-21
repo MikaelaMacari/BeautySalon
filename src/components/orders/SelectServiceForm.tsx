@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FormContainer from "../../assets/styles/components/orders/FormContainer";
+import FormContainer from "../base/FormContainer";
 import Header from "./Header";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { StyledForm } from "../../assets/styles/components/base/Form.style";

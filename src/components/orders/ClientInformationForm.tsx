@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FormContainer from "../../assets/styles/components/orders/FormContainer";
+import FormContainer from "../base/FormContainer";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { StyledForm } from "../../assets/styles/components/base/Form.style";
 import { useDispatch } from "react-redux";
@@ -12,7 +12,7 @@ import Error from "../base/Error";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../base/FormInput";
 import Textarea from "../base/Textarea";
-import ButtonsContainer from "./ButtonsContainer";
+import ButtonsContainer from "../base/ButtonsContainer";
 import { StyledLink } from "../../assets/styles/app.style";
 import { Container } from "../../assets/styles/components/base/ButtonsContainer";
 interface FormInputInterface {

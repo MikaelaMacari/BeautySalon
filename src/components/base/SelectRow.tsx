@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { updateOrder } from "../../store/orders";
 import { RootState } from "../../store/types";
-import FormSelect from "../base/FormSelect";
+import FormSelect from "./FormSelect";
 
 interface SelectRowInterface {
   serviceCategoryError: boolean;

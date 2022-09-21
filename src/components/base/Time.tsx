@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import Grid from "@mui/material/Grid";
 
 import { updateOrder } from "../../store/orders";
-import Label from "../base/Label";
-import Input from "../base/Input";
-import Error from "../base/Error";
+import Label from "./Label";
+import Input from "./Input";
+import Error from "./Error";
 
 interface TimeInterface {
   error: boolean;

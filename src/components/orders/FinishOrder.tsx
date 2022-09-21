@@ -5,7 +5,7 @@ import Header from "./Header";
 import Container from "@mui/material/Container";
 import Row from "../base/Row";
 import { Button } from "../base";
-import ButtonsContainer from "./ButtonsContainer";
+import ButtonsContainer from "../base/ButtonsContainer";
 import { useNavigate } from "react-router-dom";
 import Modal from "../base/Modal";
 
