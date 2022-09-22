@@ -15,6 +15,7 @@ import { StyledLink } from "../../assets/styles/app.style";
 import { useNavigate } from "react-router-dom";
 import Date from "../base/Date";
 import Time from "../base/Time";
+import Price from "../base/Price";
 enum GenderEnum {
   female = "female",
   male = "male",
@@ -172,7 +173,9 @@ const SelectServiceForm = () => {
           <Time register={register} errors={errors} />
 
           {/* PRICE */}
-          <Grid container spacing={2}>
+          <Price register={register} errors={errors} />
+
+          {/* <Grid container spacing={2}>
             <Grid item xs={12} sm={2} md={1} lg={2}>
               <Label title={"Price"} description={"Select a price"} />
             </Grid>
@@ -202,7 +205,7 @@ const SelectServiceForm = () => {
             <Grid item xs={2} sm={2} md={1} lg={2}>
               <ExpandMoreIcon />
             </Grid>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} lg={12}>
             {/* <input type="submit" /> */}
             {/* <StyledLink to="/orders/step/2"> */}

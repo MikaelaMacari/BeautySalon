@@ -9,18 +9,25 @@ interface InputInterface {
   register: any;
   validationSchema: any;
   width?: string;
-  // value?: string;
-  // readonly: boolean;
-  // handleChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  // openDropdown?: () => void;
-
-  // error?: any;
-  // setError?: React.Dispatch<React.SetStateAction<boolean>>;
-  // getValue?: (value: string | undefined) => void;
+  readonly?: boolean;
+  value?: string;
+  openDropdown?: () => void;
 }
 
-const Input = ({ id, inputName, type, placeholder, register, validationSchema, width }: InputInterface) => {
-  return <StyledInput id={id} name={inputName} type={type} placeholder={placeholder} width={width} {...register(inputName, validationSchema)} />;
+const Input = ({ id, inputName, type, placeholder, register, validationSchema, width, readonly, openDropdown, value }: InputInterface) => {
+  return (
+    <StyledInput
+      id={id}
+      name={inputName}
+      type={type}
+      placeholder={placeholder}
+      width={width}
+      {...register(inputName, validationSchema)}
+      readonly={readonly}
+      onClick={openDropdown}
+      value={value}
+    />
+  );
 };
 
 export default Input;

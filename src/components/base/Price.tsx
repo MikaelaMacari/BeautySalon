@@ -12,87 +12,106 @@ import Dropdown from "./Dropdown";
 import Error from "./Error";
 
 interface PriceInterface {
-  priceError: boolean;
-  currencieError: boolean;
-  getInputValue: (inputValue: number) => void;
-  returnObject?: boolean;
+  required?: any;
+  width?: string;
+  validationSchema?: any;
+  errors?: any;
+  register?: any;
+  type?: string;
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  inputName?: any;
+  value?: string;
+  openDropdown?: () => void;
 }
-const Price = ({ priceError, currencieError, returnObject = false, getInputValue }: PriceInterface) => {
+const Price = ({ inputName, register, errors, value }: PriceInterface) => {
   const currencies = useSelector((state: RootState) => state.currencies.value);
-  const [value, setValue] = useState<string>("");
+  const [inputValue, setinputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [priceValue, setPriceValue] = useState<string>("");
+  // const [priceValue, setPriceValue] = useState<string>("");
 
   const dispatch = useDispatch();
 
   const setPrice = (price: number) => {
     dispatch(updateOrder({ price }));
   };
-  const handlePriceUpdate = (e: any) => {
-    const price = e.target.value;
-    setPriceValue(price);
-    setPrice(price);
-  };
+  // const handlePriceUpdate = (e: any) => {
+  //   const price = e.target.value;
+  //   setPriceValue(price);
+  //   setPrice(price);
+  // };
 
   const openDropdown = () => {
     setIsOpen((currentState) => !currentState);
+    console.log("OPEN DROPDOWN");
   };
   const handleClick = (value: any) => {
     openDropdown();
-    if (returnObject) {
-      getInputValue(value);
-    } else {
-      getInputValue(value.id);
-    }
-    setValue(value.name);
+    setinputValue(value);
   };
 
-  const [isCurrencie, setIsCurrencie] = useState<boolean>(true);
-
-  const priceInput = {
-    id: 1,
-    inputName: "currencie",
-    type: "text",
-    placeholder: "MDL",
-    title: "Price",
-    description: "Select currencie",
-    list: currencies,
-    readonly: true,
-  };
+  // const priceInput = {
+  //   id: 1,
+  //   inputName: "currencie",
+  //   type: "text",
+  //   placeholder: "MDL",
+  //   title: "Price",
+  //   description: "Select currencie",
+  //   list: currencies,
+  //   readonly: true,
+  // };
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={2} md={1} lg={2}>
-        <Label title={priceInput.title} description={priceInput.description} />
+        <Label title={"Price"} description={"Select a price"} />
       </Grid>
-      {isCurrencie && (
-        <Grid item xs={10} sm={8} md={10} lg={4}>
-          {/* <Input
-            type={"number"}
-            placeholder={"1200"}
-            value={priceValue}
-            inputName={"price"}
-            readonly={false}
-            handleChange={handlePriceUpdate}
-            width={"270px"}
-            error={priceError}
-          /> */}
-          {priceError && <Error errorMessage={"Please select a price!"} />}
-        </Grid>
-      )}
-      <Grid item xs={10} sm={8} md={10} lg={4}>
-        {/* <Input
-          type={priceInput.type}
-          placeholder={priceInput.placeholder}
-          value={value}
-          inputName={priceInput.inputName}
-          readonly={priceInput.readonly}
-          openDropdown={openDropdown}
-          width={"270px"}
-          error={currencieError}
-        /> */}
 
-        {isOpen && <Dropdown list={priceInput.list} handleClick={handleClick} />}
-        {currencieError && <Error errorMessage={"Please choose a currencie!"} />}
+      <Grid item xs={10} sm={8} md={10} lg={4}>
+        <Input
+          id={inputName}
+          inputName={"price"}
+          type="number"
+          placeholder="1234.50"
+          register={register}
+          validationSchema={{
+            required: "Please select a price!",
+            pattern: {
+              value: /^[0-9]+$/,
+              message: "Please enter a valid number!",
+            },
+          }}
+          width="270px"
+        />
+        {errors && <Error errorMessage={errors["price"]?.message} />}
+      </Grid>
+      <Grid item xs={10} sm={8} md={10} lg={4}>
+        <Input
+          id={inputName}
+          inputName={"currencie"}
+          type="text"
+          placeholder="MDL"
+          register={register}
+          validationSchema={{
+            required: "Please select a currencie!",
+          }}
+          openDropdown={openDropdown}
+          width="270px"
+        />
+        {errors && <Error errorMessage={errors["currencie"]?.message} />}
+
+        {isOpen && (
+          <Dropdown
+            inputName={"currencieId"}
+            // validationSchema={{
+            //   required: "Please select a currencie!",
+            // }}
+            register={register}
+            list={currencies}
+            handleClick={handleClick}
+          />
+        )}
+        {/* {errors && <Error errorMessage={errors[inputName]?.message} />} */}
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>
         <ExpandMoreIcon />
@@ -101,3 +120,36 @@ const Price = ({ priceError, currencieError, returnObject = false, getInputValue
   );
 };
 export default Price;
+/*
+ <Grid container spacing={2}>
+            <Grid item xs={12} sm={2} md={1} lg={2}>
+              <Label title={"Price"} description={"Select a price"} />
+            </Grid>
+
+            <Grid item xs={10} sm={8} md={10} lg={4}>
+              <input type="number" {...register("price", { required: "Please select a price!" })} />
+              <Error errorMessage={errors?.price?.message} />
+            </Grid>
+
+            <Grid item xs={10} sm={8} md={10} lg={4}>
+              <select {...register("currencieId", { required: "Please select a currencie!" })}>
+                {currencies.map((currencie) => {
+                  return (
+                    <>
+                      <option value="" selected hidden>
+                        Select from list
+                      </option>
+                      <option key={currencie.id} value={currencie.id}>
+                        {currencie.name}
+                      </option>
+                    </>
+                  );
+                })}
+              </select>
+              <Error errorMessage={errors?.currencieId?.message} />
+            </Grid>
+            <Grid item xs={2} sm={2} md={1} lg={2}>
+              <ExpandMoreIcon />
+            </Grid>
+          </Grid>
+*/

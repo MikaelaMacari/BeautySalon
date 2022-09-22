@@ -20,7 +20,7 @@ interface TimeInterface {
   inputName?: any;
 }
 
-const Time = ({ inputName, register, errors, required, type, placeholder, width, validationSchema, title, description }: TimeInterface) => {
+const Time = ({ inputName, register, errors }: TimeInterface) => {
   const dispatch = useDispatch();
 
   const [startTime, setStartTimeValue] = useState<string>("");
@@ -51,7 +51,7 @@ const Time = ({ inputName, register, errors, required, type, placeholder, width,
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
         <Input
-          id={inputName}
+          id={"startTime"}
           inputName={"startTime"}
           type="time"
           placeholder="15:45"
@@ -59,11 +59,11 @@ const Time = ({ inputName, register, errors, required, type, placeholder, width,
           validationSchema={{ required: "Please select a starting hour!" }}
           width="270px"
         />
-        {errors && <Error errorMessage={errors[inputName]?.message} />}
+        {errors && <Error errorMessage={errors["startTime"]?.message} />}
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
         <Input
-          id={inputName}
+          id={"endTime"}
           inputName={"endTime"}
           type="time"
           placeholder="17:00"
@@ -71,7 +71,7 @@ const Time = ({ inputName, register, errors, required, type, placeholder, width,
           validationSchema={{ required: "Please select an ending hour!" }}
           width="270px"
         />
-        {errors && <Error errorMessage={errors[inputName]?.message} />}
+        {errors && <Error errorMessage={errors["endTime"]?.message} />}
       </Grid>
     </Grid>
   );
