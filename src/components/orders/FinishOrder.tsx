@@ -3,11 +3,11 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/types";
 import Header from "./Header";
 import Container from "@mui/material/Container";
-import Row from "../base/Row";
-import { Button } from "../base";
 import ButtonsContainer from "../base/ButtonsContainer";
 import { useNavigate } from "react-router-dom";
 import Modal from "../base/Modal";
+import Row from "../formElements/Row";
+import { Button } from "../base";
 
 const FinishOrder: React.FC = () => {
   const services = useSelector((state: RootState) => state.services.value);

@@ -45,7 +45,7 @@ interface DropdownInterface {
 
 const Dropdown = ({ list, handleClick, register, validationSchema, inputName }: DropdownInterface) => {
   return (
-    <Select {...register("currencie")}>
+    <Select>
       {list &&
         list.map((item, index) => {
           const isLast: boolean = index === list.length - 1;

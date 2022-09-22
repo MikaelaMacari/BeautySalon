@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import FormContainer from "../base/FormContainer";
 import Header from "./Header";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { StyledForm } from "../../assets/styles/components/base/Form.style";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types";
-import Label from "../base/Label";
 import { Button } from "../base";
 import { updateOrder } from "../../store/orders";
-import Error from "../base/Error";
 import { StyledLink } from "../../assets/styles/app.style";
 import { useNavigate } from "react-router-dom";
-import Date from "../base/Date";
-import Time from "../base/Time";
-import Price from "../base/Price";
-enum GenderEnum {
-  female = "female",
-  male = "male",
-  other = "other",
-}
+import Date from "../formElements/Date";
+import FormContainer from "../formElements/FormContainer";
+import Label from "../formElements/Label";
+import Error from "../formElements/Error";
+import Time from "../formElements/Time";
+import Price from "../formElements/Price";
 
 interface FormInputInterface {
   serviceCategoryId: number;
@@ -47,6 +42,9 @@ const SelectServiceForm = () => {
   //FUNCTIONS -> Set values in Redux store
   const updateNewOrder = (data: any) => {
     dispatch(updateOrder({ ...data }));
+  };
+  const getId = (arr: any, id: any) => {
+    console.log(currencies);
   };
   const {
     register,

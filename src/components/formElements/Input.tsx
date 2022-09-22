@@ -12,9 +12,22 @@ interface InputInterface {
   readonly?: boolean;
   value?: string;
   openDropdown?: () => void;
+  handleChange?: () => void;
 }
 
-const Input = ({ id, inputName, type, placeholder, register, validationSchema, width, readonly, openDropdown, value }: InputInterface) => {
+const Input = ({
+  id,
+  inputName,
+  type,
+  placeholder,
+  register,
+  validationSchema,
+  width,
+  readonly,
+  openDropdown,
+  value,
+  handleChange,
+}: InputInterface) => {
   return (
     <StyledInput
       id={id}
@@ -26,6 +39,7 @@ const Input = ({ id, inputName, type, placeholder, register, validationSchema, w
       readonly={readonly}
       onClick={openDropdown}
       value={value}
+      onChange={handleChange}
     />
   );
 };

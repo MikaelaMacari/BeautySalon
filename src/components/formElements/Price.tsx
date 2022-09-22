@@ -25,9 +25,10 @@ interface PriceInterface {
   value?: string;
   openDropdown?: () => void;
 }
-const Price = ({ inputName, register, errors, value }: PriceInterface) => {
+const Price = ({ inputName, register, errors }: PriceInterface) => {
   const currencies = useSelector((state: RootState) => state.currencies.value);
   const [inputValue, setinputValue] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
   // const [priceValue, setPriceValue] = useState<string>("");
 
@@ -47,10 +48,15 @@ const Price = ({ inputName, register, errors, value }: PriceInterface) => {
     console.log("OPEN DROPDOWN");
   };
   const handleClick = (value: any) => {
-    openDropdown();
-    setinputValue(value);
-  };
+    console.log(value);
 
+    openDropdown();
+    setinputValue(value.name);
+  };
+  console.log(inputValue);
+  const handleChange = () => {
+    console.log(id);
+  };
   // const priceInput = {
   //   id: 1,
   //   inputName: "currencie",
@@ -88,7 +94,7 @@ const Price = ({ inputName, register, errors, value }: PriceInterface) => {
       <Grid item xs={10} sm={8} md={10} lg={4}>
         <Input
           id={inputName}
-          inputName={"currencie"}
+          inputName={"currencieId"}
           type="text"
           placeholder="MDL"
           register={register}
@@ -97,20 +103,12 @@ const Price = ({ inputName, register, errors, value }: PriceInterface) => {
           }}
           openDropdown={openDropdown}
           width="270px"
+          value={inputValue}
+          handleChange={handleChange}
         />
-        {errors && <Error errorMessage={errors["currencie"]?.message} />}
+        {errors && <Error errorMessage={errors["currencieId"]?.message} />}
 
-        {isOpen && (
-          <Dropdown
-            inputName={"currencieId"}
-            // validationSchema={{
-            //   required: "Please select a currencie!",
-            // }}
-            register={register}
-            list={currencies}
-            handleClick={handleClick}
-          />
-        )}
+        {isOpen && <Dropdown list={currencies} handleClick={handleClick} />}
         {/* {errors && <Error errorMessage={errors[inputName]?.message} />} */}
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>

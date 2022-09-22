@@ -1,19 +1,15 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import FormContainer from "../base/FormContainer";
 import { RootState } from "../../store/types";
 import Header from "./Header";
 import { StyledForm } from "../../assets/styles/components/base/Form.style";
-import SelectRow from "../base/SelectRow";
-import Date from "../base/Date";
-import Time from "../base/Time";
-import Price from "../base/Price";
 import { Button } from "../base";
 import { useNavigate } from "react-router-dom";
 import { updateOrder } from "../../store/orders";
 import { useForm } from "react-hook-form";
 import SelectServiceForm from "./SelectServiceForm";
+import FormContainer from "../formElements/FormContainer";
 
 interface SelectServiceInterface {
   setError?: React.Dispatch<React.SetStateAction<boolean>>;
