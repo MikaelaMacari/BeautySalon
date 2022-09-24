@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import Grid from "@mui/material/Grid";
 
-import { updateOrder } from "../../store/orders";
 import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
@@ -17,33 +15,9 @@ interface TimeInterface {
   title?: string;
   description?: string;
   placeholder?: string;
-  inputName?: any;
 }
 
-const Time = ({ inputName, register, errors }: TimeInterface) => {
-  const dispatch = useDispatch();
-
-  const [startTime, setStartTimeValue] = useState<string>("");
-  const [endTime, setEndTimeValue] = useState<string>("");
-
-  const setStartTime = (startTime: string) => {
-    dispatch(updateOrder({ startTime }));
-  };
-  const setEndTime = (endTime: string) => {
-    dispatch(updateOrder({ endTime }));
-  };
-
-  const startTimeUpdate = (e: any) => {
-    const startTimeValue = e.target.value;
-    setStartTimeValue(startTimeValue);
-    setStartTime(startTimeValue);
-  };
-  const endTimeUpdate = (e: any) => {
-    const endTimeValue = e.target.value;
-    setEndTimeValue(endTimeValue);
-    setEndTime(endTimeValue);
-  };
-
+const Time = ({ register, errors }: TimeInterface) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={2} md={2} lg={2}>

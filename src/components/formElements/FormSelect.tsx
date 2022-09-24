@@ -1,83 +1,53 @@
 import React, { useState } from "react";
-
 import Grid from "@mui/material/Grid";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-
-import Dropdown from "./Dropdown";
-import Input from "./Input";
 import Label from "./Label";
+import Input from "./Input";
+import Dropdown from "./Dropdown";
 import Error from "./Error";
 
-interface FormInterface {
-  inputName: string;
-  type: string;
-  placeholder: string;
-  title: string;
-  description: string;
-  list?: { name: string; img?: string; id: number }[];
-  readonly: boolean;
-  getInputValue: (inputValue: number) => void;
-  returnObject?: boolean;
-  errorMessage: string;
-  error: boolean;
-  setInputValue?: any;
+interface FormSelectInterface {
+  required?: any;
+  width?: string;
+  validationSchema?: any;
+  errors?: any;
+  register?: any;
+  type?: any;
+  title?: string;
+  description?: string;
+  placeholder?: any;
+  inputName?: any;
+  list?: any;
 }
-const FormSelect = ({
-  inputName,
-  type,
-  placeholder,
-  title,
-  description,
-  list,
-  readonly,
-  getInputValue,
-  returnObject = false,
-  error,
-  errorMessage,
-  setInputValue,
-}: FormInterface) => {
-  const [arrayValues, setArrayValues] = useState<any>([]);
-  const [value, setValue] = useState<string>("");
+const FormSelect = ({ inputName, register, errors, type, placeholder, validationSchema, list, title, description }: FormSelectInterface) => {
+  const [inputValue, setinputValue] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openDropdown = () => {
     setIsOpen((currentState) => !currentState);
   };
-  const handleClick = (obj: any) => {
+  const handleClick = (value: any) => {
     openDropdown();
-    if (returnObject) {
-      getInputValue(obj);
-    } else {
-      getInputValue(obj.id);
-    }
-    setValue(obj.name);
-    // setInputValue((prevValue: any) => ({
-    //   ...prevValue,
-    //   ...{ name: obj.name },
-    // }));
-    setInputValue((previousState: any) => {
-      return { ...previousState, name: obj.name };
-    });
+    setinputValue(value.name);
   };
-
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={3}>
       <Grid item xs={12} sm={2} md={1} lg={2}>
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={8}>
-        {/* <Input
+        <Input
+          id={inputName}
+          inputName={inputName}
           type={type}
           placeholder={placeholder}
-          value={value}
-          inputName={inputName}
-          readonly={readonly}
+          register={register}
+          validationSchema={validationSchema}
           openDropdown={openDropdown}
-          width={"550px"}
-          error={error}
-        /> */}
+          value={inputValue}
+        />
+        {errors && <Error errorMessage={errors[inputName]?.message} />}
         {isOpen && <Dropdown list={list} handleClick={handleClick} />}
-        {error && <Error errorMessage={errorMessage} />}
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>
         <ExpandMoreIcon />
@@ -85,5 +55,4 @@ const FormSelect = ({
     </Grid>
   );
 };
-
 export default FormSelect;

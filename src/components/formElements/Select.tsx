@@ -7,65 +7,52 @@ import Dropdown from "./Dropdown";
 import Input from "./Input";
 import Label from "./Label";
 import Error from "./Error";
+import { CustomSelect, LabelSelect, Option } from "../../assets/styles/components/base/formElements/Select.style.";
 
 interface FormInterface {
-  inputName: string;
-  type: string;
+  inputName?: string;
   placeholder: string;
+  register: any;
+  validationSchema: any;
+  width?: string;
+  readonly?: boolean;
+  value?: string;
   title: string;
-  description: string;
-  list?: { name: string; img?: string; id: number }[];
-  readonly: boolean;
-  getInputValue: (inputValue: number) => void;
-  returnObject?: boolean;
-  errorMessage: string;
-  error: boolean;
-  setInputValue?: any;
+  description?: string;
+  openDropdown?: () => void;
+  list: any;
+  errors: any;
 }
-const FormSelect = ({
-  inputName,
-  type,
-  placeholder,
-  title,
-  description,
-  list,
-  readonly,
-  getInputValue,
-  returnObject = false,
-  error,
-  errorMessage,
-  setInputValue,
-}: FormInterface) => {
-  const [arrayValues, setArrayValues] = useState<any>([]);
-  const [value, setValue] = useState<string>("");
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-
-  const openDropdown = () => {
-    setIsOpen((currentState) => !currentState);
-  };
-  const handleClick = (obj: any) => {
-    openDropdown();
-    if (returnObject) {
-      getInputValue(obj);
-    } else {
-      getInputValue(obj.id);
-    }
-    setValue(obj.name);
-    // setInputValue((prevValue: any) => ({
-    //   ...prevValue,
-    //   ...{ name: obj.name },
-    // }));
-    setInputValue((previousState: any) => {
-      return { ...previousState, name: obj.name };
-    });
-  };
-
+const Select = ({ inputName, register, validationSchema, title, description, list, errors, placeholder }: FormInterface) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={2} md={1} lg={2}>
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={8}>
+        {/* <select {...register(inputName, validationSchema)}>
+          {list.map((item: any) => {
+            return (
+              <>
+                <option value="" selected hidden>
+                  Select from list
+                </option>
+                <option key={item.id} value={item.id}>
+                  {item.name}
+                </option>
+              </>
+            );
+          })}
+        </select> */}
+        {/* <CustomSelect {...register(inputName, validationSchema)}>
+          {list.map((item: any) => {
+            return (
+              <Option key={item.id} value={item.id}>
+                {item.name}
+              </Option>
+            );
+          })}
+        </CustomSelect> */}
         {/* <CustomSelect
           id={id}
           name={inputName}
@@ -76,8 +63,7 @@ const FormSelect = ({
           readonly={readonly}
           onClick={openDropdown}
         /> */}
-        {isOpen && <Dropdown list={list} handleClick={handleClick} />}
-        {error && <Error errorMessage={errorMessage} />}
+        <Error errorMessage={errors?.inputName?.message} />
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>
         <ExpandMoreIcon />
@@ -86,4 +72,4 @@ const FormSelect = ({
   );
 };
 
-export default FormSelect;
+export default Select;
