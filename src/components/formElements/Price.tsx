@@ -8,6 +8,7 @@ import Label from "./Label";
 import Input from "./Input";
 import Dropdown from "./Dropdown";
 import Error from "./Error";
+import { InputLabel } from "../../assets/styles/components/base/FormSelect.style";
 
 interface PriceInterface {
   required?: any;
@@ -23,9 +24,11 @@ interface PriceInterface {
   value?: string;
   openDropdown?: () => void;
 }
-const Price = ({ inputName, register, errors }: PriceInterface) => {
+const Price = ({ inputName, register, errors, validationSchema }: PriceInterface) => {
   const currencies = useSelector((state: RootState) => state.currencies.value);
-  const [inputValue, setinputValue] = useState<string>("");
+  const [inputValue, setInputValue] = useState<string>("");
+  const [isInputValue, setIsInputValue] = useState<boolean>(false);
+  const [inputId, setInputId] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const openDropdown = () => {
@@ -35,7 +38,9 @@ const Price = ({ inputName, register, errors }: PriceInterface) => {
     console.log(value);
 
     openDropdown();
-    setinputValue(value.name);
+    setInputValue(value.name);
+    setInputId(value.id);
+    setIsInputValue(true);
   };
   return (
     <Grid container spacing={2}>
@@ -62,19 +67,21 @@ const Price = ({ inputName, register, errors }: PriceInterface) => {
         {errors && <Error errorMessage={errors["price"]?.message} />}
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={4}>
+        <InputLabel width="270px" onClick={() => openDropdown()} isInputValue={isInputValue}>
+          {inputValue ? inputValue : "MDL"}
+        </InputLabel>
         <Input
+          display="none"
           id={inputName}
           inputName={"currencieId"}
+          value={inputId}
           type="text"
-          placeholder="MDL"
           register={register}
           validationSchema={{
             required: "Please select a currencie!",
           }}
-          openDropdown={openDropdown}
-          width="270px"
-          value={inputValue}
           readonly={true}
+          placeholder="MDL"
         />
         {errors && <Error errorMessage={errors["currencieId"]?.message} />}
         {isOpen && <Dropdown list={currencies} handleClick={handleClick} />}

@@ -13,6 +13,7 @@ interface InputInterface {
   value?: string;
   openDropdown?: () => void;
   handleChange?: () => void;
+  display?: any;
 }
 
 const Input = ({
@@ -27,6 +28,7 @@ const Input = ({
   openDropdown,
   value,
   handleChange,
+  display,
 }: InputInterface) => {
   return (
     <StyledInput
@@ -36,10 +38,11 @@ const Input = ({
       placeholder={placeholder}
       width={width}
       {...register(inputName, validationSchema)}
-      readonly={readonly}
+      readOnly={readonly}
       onClick={openDropdown}
       value={value}
       onChange={handleChange}
+      display={display}
     />
   );
 };

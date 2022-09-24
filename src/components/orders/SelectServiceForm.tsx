@@ -33,8 +33,6 @@ const SelectServiceForm = () => {
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
   const masters = useSelector((state: RootState) => state.masters.value);
-  const currencies = useSelector((state: RootState) => state.currencies.value);
-  const newOrder = useSelector((state: RootState) => state.orders.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
