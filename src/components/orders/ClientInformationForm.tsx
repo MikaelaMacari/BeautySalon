@@ -28,7 +28,17 @@ const ClientInformationForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputInterface>();
+  } = useForm<FormInputInterface>({
+    mode: "onSubmit",
+    reValidateMode: "onBlur",
+    defaultValues: {},
+    resolver: undefined,
+    context: undefined,
+    criteriaMode: "firstError",
+    shouldFocusError: true,
+    shouldUnregister: false,
+    delayError: undefined,
+  });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
     console.log(data);
     updateNewOrder(data);

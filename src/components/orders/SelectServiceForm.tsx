@@ -44,7 +44,10 @@ const SelectServiceForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputInterface>();
+  } = useForm<FormInputInterface>({
+    mode: "onSubmit",
+    reValidateMode: "onBlur",
+  });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
     console.log(data);
     updateNewOrder(data);

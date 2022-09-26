@@ -20,7 +20,7 @@ interface FormSelectInterface {
   inputName?: any;
   list?: any;
 }
-const FormSelect = ({ inputName, register, errors, type, placeholder, validationSchema, list, title, description }: FormSelectInterface) => {
+const FormSelect = ({ inputName, register, errors, placeholder, validationSchema, list, title, description }: FormSelectInterface) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isInputValue, setIsInputValue] = useState<boolean>(false);
   const [inputId, setInputId] = useState<string>("");
