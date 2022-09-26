@@ -16,6 +16,7 @@ import Error from "../formElements/Error";
 import Time from "../formElements/Time";
 import Price from "../formElements/Price";
 import FormSelect from "../formElements/FormSelect";
+import Autocomplete from '../formElements/Autocomplete' 
 
 interface FormInputInterface {
   serviceCategoryId: number;
@@ -26,6 +27,7 @@ interface FormInputInterface {
   endTime: string;
   price: number;
   currencieId: number;
+  'test-autocomplete': string
 }
 
 const SelectServiceForm = () => {
@@ -41,6 +43,7 @@ const SelectServiceForm = () => {
     dispatch(updateOrder({ ...data }));
   };
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -55,67 +58,9 @@ const SelectServiceForm = () => {
     <>
       <Header />
       <FormContainer>
+        <Autocomplete control={control}/>
         <StyledForm error={false} onSubmit={handleSubmit(onSubmit)}>
           {/* SERVICE CATEGORY */}
-          <FormSelect
-            inputName="serviceCategoryId"
-            placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a service category!",
-            }}
-            title="Service Category"
-            description="Please select a service category"
-            list={products}
-            errors={errors}
-          />
-          {/* SERVICES */}
-          <FormSelect
-            inputName="serviceId"
-            placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a service!",
-            }}
-            title="Service"
-            description="Please select a service"
-            list={services}
-            errors={errors}
-          />
-          {/* MASTER */}
-          <FormSelect
-            inputName="masterId"
-            placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a master!",
-            }}
-            title="Master"
-            description="Please select a master"
-            list={masters}
-            errors={errors}
-          />
-
-          {/* DATE */}
-          <Date
-            title="Date"
-            description="Select a date"
-            inputName="date"
-            placeholder="12.07.2022"
-            register={register}
-            errors={errors}
-            type="date"
-            validationSchema={{
-              required: "Date field is required!",
-            }}
-            required
-          />
-          {/* Time */}
-          <Time register={register} errors={errors} />
-
-          {/* PRICE */}
-          <Price register={register} errors={errors} />
-
           <Grid item xs={12} lg={12}>
             <Button title={"Next step"} isNext={true} />
           </Grid>
