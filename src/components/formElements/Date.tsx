@@ -3,13 +3,14 @@ import Grid from "@mui/material/Grid";
 import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
+import { FormInputInterface } from "../orders/SelectServiceForm";
+import { UseFormRegister } from "react-hook-form";
 
 export interface DateInterface {
-  required?: any;
   width?: string;
   validationSchema: any;
   errors: any;
-  register: any;
+  register: UseFormRegister<FormInputInterface>;
   type: string;
   title: string;
   description: string;
@@ -17,7 +18,7 @@ export interface DateInterface {
   inputName: string;
 }
 
-const Date = ({ inputName, register, errors, required, type, placeholder, width, validationSchema, title, description }: DateInterface) => {
+const Date = ({ inputName, register, errors, type, placeholder, width, validationSchema, title, description }: DateInterface) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={2} md={2}>

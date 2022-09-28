@@ -76,9 +76,7 @@
 import React, { useState } from "react";
 import { TextField, Divider } from "@mui/material";
 import { Controller } from "react-hook-form";
-import { StyledSelect } from "../../assets/styles/components/base/formElements/Select.style.";
-import { HorizontalDivider } from "../../assets/styles/components/Header/DropdownMenu.style";
-import { Option } from "../../assets/styles/components/base/Dropdown.style";
+import { Option, OptionsContainer, StyledSelect } from "../../assets/styles/components/formElements/Select.style.";
 interface SelectInterface {
   control: any;
   list: any;
@@ -97,16 +95,16 @@ const Select = ({ control, list, inputName, rules, placeholder, width }: SelectI
       render={({ fieldState: { error }, field: { onChange, ref } }) => (
         <StyledSelect
           sx={{ width: width }}
-          onChange={(e, data: any) => onChange(data)}
+          onChange={(e, data: any) => onChange(data.id)}
           isOptionEqualToValue={(option: any, value: any) => option.name === value.name}
           getOptionLabel={(option: any) => option.name}
           renderOption={(props: any, option: any) => (
-            <div key={Math.random()}>
+            <OptionsContainer key={Math.random()}>
               <Option key={option.id} {...props}>
                 {option.name}
               </Option>
               {!option.isLast && <Divider />}
-            </div>
+            </OptionsContainer>
           )}
           disablePortal
           options={list}

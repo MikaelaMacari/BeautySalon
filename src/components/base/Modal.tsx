@@ -1,7 +1,8 @@
 import React, { useRef } from "react";
 import { StyledLink } from "../../assets/styles/app.style";
-import { Background, Description, OutlinedButton, PrimaryButton, StyledModal, Title } from "../../assets/styles/components/base/Modal.style";
-import ButtonsContainer from "./ButtonsContainer";
+import { Background, StyledModal, Description, OutlinedButton, PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
+import { Title } from "../../assets/styles/components/formElements/Row.style";
+import ButtonsContainer from "../buttons/ButtonsContainer";
 interface ModalInterface {
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;

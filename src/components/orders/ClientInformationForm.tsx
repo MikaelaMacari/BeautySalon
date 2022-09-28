@@ -1,14 +1,14 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { StyledForm } from "../../assets/styles/components/base/Form.style";
 import { useDispatch } from "react-redux";
-import { Button } from "../base";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
-import ButtonsContainer from "../base/ButtonsContainer";
-import FormContainer from "../formElements/FormContainer";
 import FormInput from "../formElements/FormInput";
 import Textarea from "../formElements/Textarea";
+import FormContainer from "../formElements/FormContainer";
+import { StyledForm } from "../../assets/styles/components/formElements/Form.style";
+import ButtonsContainer from "../buttons/ButtonsContainer";
+import { Button } from "../buttons/Button";
 interface FormInputInterface {
   name: string;
   phone: string;

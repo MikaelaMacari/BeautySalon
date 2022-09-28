@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Label from "./Label";
-import { StyledTextarea } from "../../assets/styles/components/base/Textarea.style";
+import { StyledTextarea } from "../../assets/styles/components/formElements/Textarea.style";
 
 interface TextareaInterface {
   register?: any;

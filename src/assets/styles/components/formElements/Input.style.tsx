@@ -4,7 +4,7 @@ import { colors, radius } from "../../variables.style";
 
 export const StyledInput = styled.input<{ display: string }>`
   background-color: ${colors.inputBgColor};
-  width: ${(props) => (props.width ? props.width : "550px")};
+  width: ${(props) => (props.width ? props.width : "530px")};
   display: ${(props) => props.display && props.display};
   border-radius: ${radius.radiusS};
   padding: 12px 15px;

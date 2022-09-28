@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledError } from "../../assets/styles/components/base/Error";
+import { StyledError } from "../../assets/styles/components/formElements/Error";
 interface Error {
   errorMessage: string | undefined;
 }

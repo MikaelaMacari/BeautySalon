@@ -31,7 +31,7 @@ const Time = ({ register, errors }: TimeInterface) => {
           placeholder="15:45"
           register={register}
           validationSchema={{ required: "Please select a starting hour!" }}
-          width="270px"
+          width="260px"
         />
         {errors && <Error errorMessage={errors["startTime"]?.message} />}
       </Grid>
@@ -43,7 +43,7 @@ const Time = ({ register, errors }: TimeInterface) => {
           placeholder="17:00"
           register={register}
           validationSchema={{ required: "Please select an ending hour!" }}
-          width="270px"
+          width="260px"
         />
         {errors && <Error errorMessage={errors["endTime"]?.message} />}
       </Grid>

@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledInput } from "../../assets/styles/components/base/Input.style";
+import { StyledInput } from "../../assets/styles/components/formElements/Input.style";
 
 interface InputInterface {
   id: any;
@@ -12,24 +12,11 @@ interface InputInterface {
   readonly?: boolean;
   value?: string;
   openDropdown?: () => void;
-  handleChange?: () => void;
+  handleChange?: (() => void) | undefined;
   display?: any;
 }
 
-const Input = ({
-  id,
-  inputName,
-  type,
-  placeholder,
-  register,
-  validationSchema,
-  width,
-  readonly,
-  openDropdown,
-  value,
-  handleChange,
-  display,
-}: InputInterface) => {
+const Input = ({ id, inputName, type, placeholder, register, validationSchema, width, readonly, value, handleChange, display }: InputInterface) => {
   return (
     <StyledInput
       id={id}
@@ -39,7 +26,6 @@ const Input = ({
       width={width}
       {...register(inputName, validationSchema)}
       readOnly={readonly}
-      onClick={openDropdown}
       value={value}
       onChange={handleChange}
       display={display}

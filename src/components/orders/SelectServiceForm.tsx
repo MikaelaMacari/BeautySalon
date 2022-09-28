@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Header from "./Header";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { StyledForm } from "../../assets/styles/components/base/Form.style";
+import { DeepPartial, FieldValues, Mode, Resolver, SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types";
-import { Button } from "../base";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
 import Date from "../formElements/Date";
@@ -14,9 +11,10 @@ import FormContainer from "../formElements/FormContainer";
 import Time from "../formElements/Time";
 import Price from "../formElements/Price";
 import FormSelect from "../formElements/FormSelect";
-import Select from "../formElements/Select";
+import { StyledForm } from "../../assets/styles/components/formElements/Form.style";
+import { Button } from "../buttons/Button";
 
-interface FormInputInterface {
+export interface FormInputInterface {
   serviceCategoryId: number;
   serviceId: number;
   masterId: number;
@@ -46,8 +44,8 @@ const SelectServiceForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputInterface>({
-    mode: "onSubmit",
-    reValidateMode: "onBlur",
+    mode: "all",
+    reValidateMode: "onChange",
   });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
     console.log(data);
@@ -67,9 +65,9 @@ const SelectServiceForm = () => {
             description="Please select a service category"
             control={control}
             list={products}
-            inputName="serviceCategory"
+            inputName="serviceCategoryId"
             rules={{
-              required: "Please select a service category!",
+              required: { value: true, message: "Please select a service category!" },
             }}
             errors={errors}
           />
@@ -79,9 +77,9 @@ const SelectServiceForm = () => {
             description="Please select a service"
             control={control}
             list={services}
-            inputName="services"
+            inputName="serviceId"
             rules={{
-              required: "Please select a service!",
+              required: { value: true, message: "Please select a service!" },
             }}
             placeholder="Select from list"
             errors={errors}
@@ -92,9 +90,9 @@ const SelectServiceForm = () => {
             description="Please select a master"
             control={control}
             list={masters}
-            inputName="masters"
+            inputName="masterId"
             rules={{
-              required: "Please select a master!",
+              required: { value: true, message: "Please select a master!" },
             }}
             placeholder="Select from list"
             errors={errors}
@@ -112,7 +110,6 @@ const SelectServiceForm = () => {
             validationSchema={{
               required: "Date field is required!",
             }}
-            required
           />
           {/* Time */}
           <Time register={register} errors={errors} />
@@ -121,12 +118,12 @@ const SelectServiceForm = () => {
           <Price
             register={register}
             errors={errors}
-            inputName="currencies"
+            inputName="currencieId"
             control={control}
             list={currencies}
             placeholder="MDL"
             rules={{
-              required: "Please select a currencie!",
+              required: { value: true, message: "Please select a currencie!" },
             }}
           />
           <Grid item xs={12} lg={12}>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Tooltip from "@mui/material/Tooltip";
-import { StyledLabel, Title, TooltipText } from "../../assets/styles/components/base/Label.style";
+import { StyledLabel, Title, TooltipText } from "../../assets/styles/components/formElements/Label.style";
 
 export interface LabelInterface {
   title?: string;
