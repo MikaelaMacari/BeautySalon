@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, startTransition } from "react";
 
 import { Container, Grid } from "@mui/material";
 import Slide from "@mui/material/Slide";
@@ -7,6 +7,7 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
 import { Header, Title } from "../../assets/styles/components/home/CardGroup.style";
 import Card from "./Card";
+import { useNavigate } from "react-router-dom";
 
 interface CardGroupInterface {
   data: { name: string; img: string; id: number }[];
@@ -14,6 +15,7 @@ interface CardGroupInterface {
 }
 
 const CardGroup = ({ data, title }: CardGroupInterface) => {
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = React.useRef(null);
 
@@ -27,7 +29,12 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
       return <ExpandMoreRoundedIcon fontSize="large" onClick={minimizeContainer} />;
     }
   };
-
+  const handleClick = () => {
+    console.log("Clicked");
+    startTransition(() => {
+      navigate(`/orders/step/1`);
+    });
+  };
   return (
     <Container ref={containerRef}>
       <Header>
@@ -41,7 +48,7 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
             {data.map((item) => {
               return (
                 <Grid key={item.id} item xs={2} sm={2} md={2} lg={2}>
-                  <Card title={item.name} img={item.img} />
+                  <Card title={item.name} img={item.img} handleClick={handleClick} />
                 </Grid>
               );
             })}
