@@ -24,13 +24,15 @@ const FinishOrder: React.FC = () => {
     return array.find((item: any) => item.id === Number(id));
   };
   const getServiceName = () => {
-    return getValueById(services, newOrder.serviceId).name;
+    console.log(newOrder);
+
+    // return getValueById(services, newOrder.serviceId).name;
   };
   const getMasterName = () => {
-    return getValueById(masters, newOrder.masterId).name;
+    // return getValueById(masters, newOrder.masterId).name;
   };
   const getCurrencieName = () => {
-    return getValueById(currencies, newOrder.currencieId).name;
+    // return getValueById(currencies, newOrder.currencieId).name;
   };
   // const serviceName = getServiceName();
   // const masterName = getMasterName();

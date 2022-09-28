@@ -11,11 +11,10 @@ import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
 import Date from "../formElements/Date";
 import FormContainer from "../formElements/FormContainer";
-import Label from "../formElements/Label";
-import Error from "../formElements/Error";
 import Time from "../formElements/Time";
 import Price from "../formElements/Price";
 import FormSelect from "../formElements/FormSelect";
+import Select from "../formElements/Select";
 
 interface FormInputInterface {
   serviceCategoryId: number;
@@ -30,6 +29,7 @@ interface FormInputInterface {
 
 const SelectServiceForm = () => {
   // Store lists
+  const currencies = useSelector((state: RootState) => state.currencies.value);
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
   const masters = useSelector((state: RootState) => state.masters.value);
@@ -41,6 +41,7 @@ const SelectServiceForm = () => {
     dispatch(updateOrder({ ...data }));
   };
   const {
+    control,
     register,
     handleSubmit,
     formState: { errors },
@@ -61,41 +62,41 @@ const SelectServiceForm = () => {
         <StyledForm error={false} onSubmit={handleSubmit(onSubmit)}>
           {/* SERVICE CATEGORY */}
           <FormSelect
-            inputName="serviceCategoryId"
             placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a service category!",
-            }}
             title="Service Category"
             description="Please select a service category"
+            control={control}
             list={products}
+            inputName="serviceCategory"
+            rules={{
+              required: "Please select a service category!",
+            }}
             errors={errors}
           />
           {/* SERVICES */}
           <FormSelect
-            inputName="serviceId"
-            placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a service!",
-            }}
             title="Service"
             description="Please select a service"
+            control={control}
             list={services}
+            inputName="services"
+            rules={{
+              required: "Please select a service!",
+            }}
+            placeholder="Select from list"
             errors={errors}
           />
           {/* MASTER */}
           <FormSelect
-            inputName="masterId"
-            placeholder="Select from list"
-            register={register}
-            validationSchema={{
-              required: "Please select a master!",
-            }}
             title="Master"
             description="Please select a master"
+            control={control}
             list={masters}
+            inputName="masters"
+            rules={{
+              required: "Please select a master!",
+            }}
+            placeholder="Select from list"
             errors={errors}
           />
 
@@ -117,8 +118,17 @@ const SelectServiceForm = () => {
           <Time register={register} errors={errors} />
 
           {/* PRICE */}
-          <Price register={register} errors={errors} />
-
+          <Price
+            register={register}
+            errors={errors}
+            inputName="currencies"
+            control={control}
+            list={currencies}
+            placeholder="MDL"
+            rules={{
+              required: "Please select a currencie!",
+            }}
+          />
           <Grid item xs={12} lg={12}>
             <Button title={"Next step"} isNext={true} />
           </Grid>

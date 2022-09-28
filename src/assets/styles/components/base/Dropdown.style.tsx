@@ -20,6 +20,7 @@ export const Option = styled.div`
   text-transform: capitalize;
   padding: 10px 16px;
   &:hover {
+    background-color: red;
     color: ${colors.primaryTextColor};
     transition: 0.3s ease-in;
     cursor: pointer;

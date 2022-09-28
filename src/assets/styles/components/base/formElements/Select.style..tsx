@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SelectUnstyled from "@mui/base/SelectUnstyled";
+import { Autocomplete as MuiAutocomplete } from "@mui/material";
 import { colors, fonts, fontSizes, radius } from "../../../variables.style";
 
 export const LabelSelect = styled.label`
@@ -51,3 +51,41 @@ export const StyledDropdown = styled.div`
   grid-template-columns: 1fr 2fr 1fr;
   column-gap: 16px;
 `;
+export const StyledSelect = styled(MuiAutocomplete)((props) => ({
+  "& .MuiInputBase-root": {
+    backgroundColor: `${colors.inputBgColor}`,
+    borderRadius: ` ${radius.radiusS}`,
+    width: `${(props: any) => (props.width ? props.width : "550px")}`,
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+  },
+  "& .MuiOutlinedInput-root": {
+    border: "none",
+  },
+  "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+    border: "none",
+  },
+  "& .MuiSvgIcon-root": {
+    display: "none",
+  },
+  "& input::placeholder": {
+    fontFamily: `${fonts.primaryFont}`,
+  },
+  "& input.css-b7k0tb-MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused": {
+    backgroundColor: `red`,
+  },
+  // "&& .MuiAutocomplete-listbox .MuiAutocomplete-option.Mui-focused": {
+  //   backgroundColor: `${colors.primaryTextColor}!important`,
+  //   transition: " 0.3s ease-in",
+  //   cursor: "pointer",
+  // },
+  "& 				.MuiAutocomplete-paper": {
+    backgroundColor: `red`,
+    // listStyle: "none",
+    // margin: "10px",
+    // padding: "20px 0",
+    // maxHeight: "10vh",
+    // overflow: "hidden",
+  },
+}));

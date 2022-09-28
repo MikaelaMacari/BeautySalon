@@ -5,9 +5,9 @@ interface InputInterface {
   id: any;
   inputName?: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   register: any;
-  validationSchema: any;
+  validationSchema?: any;
   width?: string;
   readonly?: boolean;
   value?: string;

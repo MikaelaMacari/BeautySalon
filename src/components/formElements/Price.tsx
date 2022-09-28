@@ -9,6 +9,7 @@ import Input from "./Input";
 import Dropdown from "./Dropdown";
 import Error from "./Error";
 import { InputLabel } from "../../assets/styles/components/base/FormSelect.style";
+import Select from "./Select";
 
 interface PriceInterface {
   required?: any;
@@ -23,9 +24,11 @@ interface PriceInterface {
   inputName?: any;
   value?: string;
   openDropdown?: () => void;
+  control?: any;
+  rules?: any;
+  list?: any;
 }
-const Price = ({ inputName, register, errors, validationSchema }: PriceInterface) => {
-  const currencies = useSelector((state: RootState) => state.currencies.value);
+const Price = ({ inputName, register, errors, validationSchema, placeholder, list, rules, control }: PriceInterface) => {
   const [inputValue, setInputValue] = useState<string>("");
   const [isInputValue, setIsInputValue] = useState<boolean>(false);
   const [inputId, setInputId] = useState<string>("");
@@ -67,24 +70,8 @@ const Price = ({ inputName, register, errors, validationSchema }: PriceInterface
         {errors && <Error errorMessage={errors["price"]?.message} />}
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={4}>
-        <InputLabel width="270px" onClick={() => openDropdown()} isInputValue={isInputValue}>
-          {inputValue ? inputValue : "MDL"}
-        </InputLabel>
-        <Input
-          display="none"
-          id={inputName}
-          inputName={"currencieId"}
-          value={inputId}
-          type="text"
-          register={register}
-          validationSchema={{
-            required: "Please select a currencie!",
-          }}
-          readonly={true}
-          placeholder="MDL"
-        />
-        {errors && <Error errorMessage={errors["currencieId"]?.message} />}
-        {isOpen && <Dropdown list={currencies} handleClick={handleClick} />}
+        <Select control={control} list={list} inputName={inputName} rules={rules} placeholder={placeholder} width="270px" />
+        {errors && <Error errorMessage={errors[inputName]?.message} />}
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>
         <ExpandMoreIcon />

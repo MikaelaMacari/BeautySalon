@@ -20,5 +20,6 @@ export const currencies: CurrenciesInterface[] = [
   {
     id: 5,
     name: "GPH",
+    isLast: true,
   },
 ];
