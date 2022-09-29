@@ -8,7 +8,7 @@ interface OrdersInterface {
   date: string;
   startTime: string;
   endTime: string;
-  price: number;
+  price: string;
   name: string;
   phone: string;
   email: string;
@@ -23,7 +23,7 @@ const newOrder = {
   date: "",
   startTime: "",
   endTime: "",
-  price: 0,
+  price: "",
   name: "",
   phone: "",
   email: "",

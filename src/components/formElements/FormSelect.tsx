@@ -14,15 +14,16 @@ interface FormSelectInterface {
   rules?: any;
   placeholder?: any;
   errors?: any;
+  defaultValue?: any;
 }
-const FormSelect = ({ inputName, list, title, description, control, rules, placeholder, errors }: FormSelectInterface) => {
+const FormSelect = ({ inputName, list, title, description, control, rules, placeholder, errors, defaultValue }: FormSelectInterface) => {
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={2} md={1} lg={2}>
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={10} sm={8} md={10} lg={8}>
-        <Select control={control} list={list} inputName={inputName} rules={rules} placeholder={placeholder} />
+        <Select control={control} list={list} inputName={inputName} rules={rules} placeholder={placeholder} defaultValue={defaultValue} />
         {errors && <Error errorMessage={errors[inputName]?.message} />}
       </Grid>
       <Grid item xs={2} sm={2} md={1} lg={2}>

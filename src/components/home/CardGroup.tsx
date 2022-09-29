@@ -8,14 +8,19 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import { Header, Title } from "../../assets/styles/components/home/CardGroup.style";
 import Card from "./Card";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateOrder } from "../../store/orders";
+import { DataTypes } from "../../ts/enum";
 
 interface CardGroupInterface {
   data: { name: string; img: string; id: number }[];
   title: string;
+  dataType: string;
 }
 
-const CardGroup = ({ data, title }: CardGroupInterface) => {
+const CardGroup = ({ data, title, dataType }: CardGroupInterface) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = React.useRef(null);
 
@@ -29,8 +34,16 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
       return <ExpandMoreRoundedIcon fontSize="large" onClick={minimizeContainer} />;
     }
   };
-  const handleClick = () => {
-    console.log("Clicked");
+  const handleClick = (id: number) => {
+    let data: any = {};
+    if (dataType === DataTypes.Services) {
+      data = { serviceId: id };
+    } else if (dataType === DataTypes.Products) {
+      data = { serviceCategoryId: id };
+    } else if (dataType === DataTypes.Masters) {
+      data = { masterId: id };
+    }
+    dispatch(updateOrder({ ...data }));
     startTransition(() => {
       navigate(`/orders/step/1`);
     });
@@ -48,7 +61,13 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
             {data.map((item) => {
               return (
                 <Grid key={item.id} item xs={2} sm={2} md={2} lg={2}>
-                  <Card title={item.name} img={item.img} handleClick={handleClick} />
+                  <Card
+                    title={item.name}
+                    img={item.img}
+                    handleClick={() => {
+                      handleClick(item.id);
+                    }}
+                  />
                 </Grid>
               );
             })}

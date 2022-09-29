@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
 import Header from "./Header";
-import { DeepPartial, FieldValues, Mode, Resolver, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types";
 import { updateOrder } from "../../store/orders";
@@ -21,7 +21,7 @@ export interface FormInputInterface {
   date: string;
   startTime: string;
   endTime: string;
-  price: number;
+  price: string;
   currencieId: number;
 }
 
@@ -31,6 +31,7 @@ const SelectServiceForm = () => {
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
   const masters = useSelector((state: RootState) => state.masters.value);
+  const newOrder = useSelector((state: RootState) => state.orders.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -46,13 +47,12 @@ const SelectServiceForm = () => {
   } = useForm<FormInputInterface>({
     mode: "all",
     reValidateMode: "onChange",
+    defaultValues: newOrder,
   });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
-    console.log(data);
     updateNewOrder(data);
     navigate(`/orders/step/2`);
   };
-
   return (
     <>
       <Header />
@@ -60,6 +60,7 @@ const SelectServiceForm = () => {
         <StyledForm error={false} onSubmit={handleSubmit(onSubmit)}>
           {/* SERVICE CATEGORY */}
           <FormSelect
+            defaultValue={newOrder.serviceCategoryId}
             placeholder="Select from list"
             title="Service Category"
             description="Please select a service category"
@@ -73,6 +74,7 @@ const SelectServiceForm = () => {
           />
           {/* SERVICES */}
           <FormSelect
+            defaultValue={newOrder.serviceId}
             title="Service"
             description="Please select a service"
             control={control}
@@ -86,6 +88,7 @@ const SelectServiceForm = () => {
           />
           {/* MASTER */}
           <FormSelect
+            defaultValue={newOrder.masterId}
             title="Master"
             description="Please select a master"
             control={control}

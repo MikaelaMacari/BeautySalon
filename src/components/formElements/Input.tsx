@@ -11,7 +11,6 @@ interface InputInterface {
   width?: string;
   readonly?: boolean;
   value?: string;
-  openDropdown?: () => void;
   handleChange?: (() => void) | undefined;
   display?: any;
 }

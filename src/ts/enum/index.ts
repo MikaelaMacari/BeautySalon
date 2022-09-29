@@ -1,4 +1,2 @@
-export enum PageLayout {
-  Default = "default",
-  Order = "order",
-}
+export { PageLayout } from "./pageLayout";
+export { DataTypes } from "./dataType";

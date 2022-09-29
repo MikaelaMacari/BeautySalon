@@ -1,6 +1,6 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../formElements/FormInput";
@@ -9,6 +9,7 @@ import FormContainer from "../formElements/FormContainer";
 import { StyledForm } from "../../assets/styles/components/formElements/Form.style";
 import ButtonsContainer from "../buttons/ButtonsContainer";
 import { Button } from "../buttons/Button";
+import { RootState } from "../../store/types";
 interface FormInputInterface {
   name: string;
   phone: string;
@@ -17,6 +18,7 @@ interface FormInputInterface {
 }
 
 const ClientInformationForm = () => {
+  const newOrder = useSelector((state: RootState) => state.orders.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,15 +31,9 @@ const ClientInformationForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputInterface>({
-    mode: "onSubmit",
-    reValidateMode: "onBlur",
-    defaultValues: {},
-    resolver: undefined,
-    context: undefined,
-    criteriaMode: "firstError",
-    shouldFocusError: true,
-    shouldUnregister: false,
-    delayError: undefined,
+    mode: "all",
+    reValidateMode: "onChange",
+    defaultValues: newOrder,
   });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
     console.log(data);

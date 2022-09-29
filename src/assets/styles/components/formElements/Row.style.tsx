@@ -21,4 +21,8 @@ export const Description = styled.div`
   max-width: 10em;
   overflow: hidden;
   word-wrap: break-word;
+  display: inline-block;
+  &::first-letter {
+    text-transform: uppercase;
+  }
 `;

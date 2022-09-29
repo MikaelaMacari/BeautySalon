@@ -18,7 +18,9 @@ const FinishOrder: React.FC = () => {
   const navigate = useNavigate();
 
   const [openModal, setOpenModal] = React.useState(false);
-  const handleOpen = () => setOpenModal((prevState) => !prevState);
+  const handleOpen = () => {
+    setOpenModal((prevState) => !prevState);
+  };
 
   const getValueById = (array: any, id: any) => {
     return array.find((item: any) => item.id === Number(id));
@@ -47,7 +49,12 @@ const FinishOrder: React.FC = () => {
         <Row title="comments" description={`${newOrder.comment}`} />
         <ButtonsContainer gap={false}>
           <Button title={"Back"} isBack={true} handleClick={() => navigate(-1)} />
-          <Button title={"Create Order"} handleClick={handleOpen} />
+          <Button
+            title={"Create Order"}
+            handleClick={() => {
+              handleOpen();
+            }}
+          />
         </ButtonsContainer>
         <Modal openModal={openModal} setOpenModal={setOpenModal} />
       </Container>
