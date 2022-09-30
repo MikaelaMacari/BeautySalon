@@ -40,7 +40,7 @@ const resetedOrder: resetedOrderInterface = {
   comment: "",
 };
 const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
-  const modalRef = useRef<any>();
+  const modalRef = useRef<any>(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
