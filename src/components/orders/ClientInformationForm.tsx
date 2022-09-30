@@ -36,7 +36,6 @@ const ClientInformationForm = () => {
     defaultValues: newOrder,
   });
   const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
-    console.log(data);
     updateNewOrder(data);
     navigate(`/orders/step/3`);
   };
