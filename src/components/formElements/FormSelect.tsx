@@ -4,15 +4,23 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Label from "./Label";
 import Error from "./Error";
 import Select from "./Select";
+import { Control } from "react-hook-form";
+import { FormInputInterface } from "../orders/SelectServiceForm";
+import { listInterface } from "../../ts/interfaces/data";
 
 interface FormSelectInterface {
   title?: string;
   description?: string;
-  inputName?: any;
-  list?: any;
-  control?: any;
-  rules?: any;
-  placeholder?: any;
+  inputName: string;
+  list: listInterface[];
+  control?: Control<FormInputInterface, any>;
+  rules?: {
+    required: {
+      value: boolean;
+      message: string;
+    };
+  };
+  placeholder: string;
   errors?: any;
   defaultValue?: any;
 }

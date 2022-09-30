@@ -3,7 +3,7 @@ import { DropdownContainer, DropdownContent } from "../../assets/styles/componen
 import chevronDown from "../../assets/icons/chevron-down.png";
 import NavbarDropdown from "./NavbarDropdown";
 import { useClickOutside } from "../../services/clickOutside";
-const DropdownMenu = () => {
+const DropdownMenu: React.FC = () => {
   const dropdownRef = useRef<any>();
   const [extendDropdown, setExtendDropdown] = useState(false);
   const openDropdown = () => {

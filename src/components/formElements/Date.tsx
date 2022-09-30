@@ -8,7 +8,7 @@ import { UseFormRegister } from "react-hook-form";
 
 export interface DateInterface {
   width?: string;
-  validationSchema: any;
+  validationSchema: { required?: string };
   errors: any;
   register: UseFormRegister<FormInputInterface>;
   type: string;
@@ -25,15 +25,7 @@ const Date = ({ inputName, register, errors, type, placeholder, width, validatio
         <Label title={title} description={description} />
       </Grid>
       <Grid item xs={12} sm={10} md={10}>
-        <Input
-          id={inputName}
-          inputName={inputName}
-          type={type}
-          placeholder={placeholder}
-          register={register}
-          validationSchema={validationSchema}
-          width={width}
-        />
+        <Input inputName={inputName} type={type} placeholder={placeholder} register={register} validationSchema={validationSchema} width={width} />
         {errors && <Error errorMessage={errors[inputName]?.message} />}
       </Grid>
     </Grid>

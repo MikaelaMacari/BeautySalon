@@ -5,7 +5,7 @@ import { StyledLabel, Title, TooltipText } from "../../assets/styles/components/
 
 export interface LabelInterface {
   title?: string;
-  description?: any;
+  description?: string;
 }
 const Label = ({ title, description }: LabelInterface) => {
   return (

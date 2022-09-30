@@ -21,3 +21,9 @@ export interface CurrenciesInterface {
   name: string;
   isLast?: boolean;
 }
+export interface listInterface {
+  id: number;
+  name: string;
+  img?: string;
+  isLast?: boolean;
+}

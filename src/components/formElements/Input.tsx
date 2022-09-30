@@ -1,13 +1,20 @@
 import React from "react";
+import { UseFormRegister } from "react-hook-form";
 import { StyledInput } from "../../assets/styles/components/formElements/Input.style";
+import { FormInputInterface } from "../orders/SelectServiceForm";
 
 interface InputInterface {
-  id: any;
-  inputName?: string;
+  inputName: string | any;
   type: string;
   placeholder?: string;
-  register: any;
-  validationSchema?: any;
+  register: UseFormRegister<FormInputInterface>;
+  validationSchema: {
+    required?: string;
+    pattern?: {
+      value: RegExp;
+      message: string;
+    };
+  };
   width?: string;
   readonly?: boolean;
   value?: string;
@@ -15,11 +22,9 @@ interface InputInterface {
   display?: any;
 }
 
-const Input = ({ id, inputName, type, placeholder, register, validationSchema, width, readonly, value, handleChange, display }: InputInterface) => {
+const Input = ({ inputName, type, placeholder, register, validationSchema, width, readonly, value, handleChange, display }: InputInterface) => {
   return (
     <StyledInput
-      id={id}
-      name={inputName}
       type={type}
       placeholder={placeholder}
       width={width}

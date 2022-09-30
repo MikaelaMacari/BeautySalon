@@ -4,13 +4,15 @@ import Grid from "@mui/material/Grid";
 import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
+import { UseFormRegister } from "react-hook-form";
+import { FormInputInterface } from "../orders/SelectServiceForm";
 
 interface TimeInterface {
-  required?: any;
+  required?: boolean;
   width?: string;
-  validationSchema?: any;
+  validationSchema?: { required?: string | undefined };
   errors?: any;
-  register?: any;
+  register: UseFormRegister<FormInputInterface>;
   type?: string;
   title?: string;
   description?: string;
@@ -25,7 +27,6 @@ const Time = ({ register, errors }: TimeInterface) => {
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
         <Input
-          id={"startTime"}
           inputName={"startTime"}
           type="time"
           placeholder="15:45"
@@ -37,7 +38,6 @@ const Time = ({ register, errors }: TimeInterface) => {
       </Grid>
       <Grid item xs={10} sm={5} md={4} lg={4}>
         <Input
-          id={"endTime"}
           inputName={"endTime"}
           type="time"
           placeholder="17:00"

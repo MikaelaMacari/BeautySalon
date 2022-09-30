@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
+import React, { SyntheticEvent, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { StyledLink } from "../../assets/styles/app.style";
@@ -12,39 +13,39 @@ interface ModalInterface {
 }
 
 interface resetedOrderInterface {
-  serviceCategoryId: any;
-  serviceId: any;
-  masterId: any;
+  serviceCategoryId: number | undefined;
+  serviceId: number | undefined;
+  masterId: number | undefined;
   date: string;
   startTime: string;
   endTime: string;
   price: string;
-  currencieId: any;
+  currencieId: number | undefined;
   name: string;
   phone: string;
   email: string;
   comment: string;
 }
 const resetedOrder: resetedOrderInterface = {
-  serviceCategoryId: null,
-  serviceId: null,
-  masterId: null,
+  serviceCategoryId: undefined,
+  serviceId: undefined,
+  masterId: undefined,
   date: "",
   startTime: "",
   endTime: "",
   price: "",
-  currencieId: null,
+  currencieId: undefined,
   name: "",
   phone: "",
   email: "",
   comment: "",
 };
 const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
-  const modalRef = useRef<any>(null);
-  const dispatch = useDispatch();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch<Dispatch<AnyAction>>();
   const navigate = useNavigate();
 
-  const handleClose = (e: any) => {
+  const handleClose = (e: SyntheticEvent) => {
     if (modalRef.current === e.target) {
       setOpenModal(false);
     }

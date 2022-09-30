@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { updateOrder } from "../../store/orders";
 import { DataTypes } from "../../ts/enum";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 
 interface CardGroupInterface {
   data: { name: string; img: string; id: number }[];
@@ -20,7 +21,7 @@ interface CardGroupInterface {
 
 const CardGroup = ({ data, title, dataType }: CardGroupInterface) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<Dispatch<AnyAction>>();
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = React.useRef(null);
 

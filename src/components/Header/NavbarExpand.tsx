@@ -7,7 +7,7 @@ const links: LinkInterface[] = [
   { to: "/", text: "cart" },
   { to: "/", text: "profile" },
 ];
-const NavbarExpand = () => {
+const NavbarExpand: React.FC = () => {
   return (
     <StyledNavbarExpand>
       {links.map((link, index) => {

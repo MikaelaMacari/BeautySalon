@@ -6,23 +6,38 @@ import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
 import Select from "./Select";
+import { Control, UseFormRegister } from "react-hook-form";
+import { FormInputInterface } from "../orders/SelectServiceForm";
+import { listInterface } from "../../ts/interfaces/data";
 
 interface PriceInterface {
   required?: string;
   width?: string;
-  validationSchema?: any;
+  validationSchema?: {
+    required?: string | undefined;
+    pattern?:
+      | {
+          value: RegExp;
+          message: string;
+        }
+      | undefined;
+  };
   errors?: any;
-  register?: any;
+  register: UseFormRegister<FormInputInterface>;
   type?: string;
   title?: string;
   description?: string;
-  placeholder?: string;
-  inputName?: any;
+  placeholder: string;
+  inputName: string;
   value?: string;
-  control?: any;
-  rules?: any;
-  list?: any;
-  handleChange?: any;
+  control?: Control<FormInputInterface, any>;
+  rules?: {
+    required: {
+      value: boolean;
+      message: string;
+    };
+  };
+  list: listInterface[];
 }
 const Price = ({ inputName, register, errors, placeholder, list, rules, control }: PriceInterface) => {
   return (
@@ -33,7 +48,6 @@ const Price = ({ inputName, register, errors, placeholder, list, rules, control 
 
       <Grid item xs={10} sm={8} md={10} lg={4}>
         <Input
-          id={inputName}
           inputName={"price"}
           type="number"
           placeholder="1234.50"
@@ -45,7 +59,6 @@ const Price = ({ inputName, register, errors, placeholder, list, rules, control 
               message: "Please enter a valid number!",
             },
           }}
-          handleChange={inputName.onChange}
           width="260px"
         />
         {errors && <Error errorMessage={errors["price"]?.message} />}

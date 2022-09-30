@@ -4,7 +4,7 @@ import Label from "./Label";
 import { StyledTextarea } from "../../assets/styles/components/formElements/Textarea.style";
 
 interface TextareaInterface {
-  register?: any;
+  register: any;
   title: string;
   placeholder: string;
   inputName: string;
@@ -16,7 +16,7 @@ const Textarea = ({ inputName, register, placeholder, title }: TextareaInterface
       <Label title={title} />
     </Grid>
     <Grid item xs={12} sm={10} md={10}>
-      <StyledTextarea id={inputName} name={inputName} placeholder={placeholder} {...register(inputName)} />
+      <StyledTextarea id={inputName} placeholder={placeholder} {...register(inputName)} />
     </Grid>
   </Grid>
 );

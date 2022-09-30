@@ -6,7 +6,8 @@ const links: LinkInterface[] = [
   { to: "/", text: "cart" },
   { to: "/", text: "profile" },
 ];
-function NavbarDropdown() {
+
+const NavbarDropdown: React.FC = () => {
   return (
     <DropdownOptionsContainer>
       {links.map((link, index) => {
@@ -18,6 +19,6 @@ function NavbarDropdown() {
       })}
     </DropdownOptionsContainer>
   );
-}
+};
 
 export default NavbarDropdown;
