@@ -53,7 +53,7 @@ const Price = ({ inputName, register, errors, placeholder, list, rules, control 
           placeholder="1234.50"
           register={register}
           validationSchema={{
-            required: "Please select a price!",
+            required: "Price field is required!",
             pattern: {
               value: /^[0-9]+$/,
               message: "Please enter a valid number!",
