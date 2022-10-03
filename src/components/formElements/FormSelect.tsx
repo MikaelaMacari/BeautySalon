@@ -6,13 +6,13 @@ import Error from "./Error";
 import Select from "./Select";
 import { Control } from "react-hook-form";
 import { FormInputInterface } from "../orders/SelectServiceForm";
-import { listInterface } from "../../ts/interfaces/data";
+import { ListInterface } from "../../ts/interfaces";
 
 interface FormSelectInterface {
   title?: string;
   description?: string;
   inputName: string;
-  list: listInterface[];
+  list: ListInterface[];
   control?: Control<FormInputInterface, any>;
   rules?: {
     required: {

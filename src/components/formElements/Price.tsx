@@ -8,7 +8,7 @@ import Error from "./Error";
 import Select from "./Select";
 import { Control, UseFormRegister } from "react-hook-form";
 import { FormInputInterface } from "../orders/SelectServiceForm";
-import { listInterface } from "../../ts/interfaces/data";
+import { ListInterface } from "../../ts/interfaces";
 
 interface PriceInterface {
   required?: string;
@@ -37,7 +37,7 @@ interface PriceInterface {
       message: string;
     };
   };
-  list: listInterface[];
+  list: ListInterface[];
 }
 const Price = ({ inputName, register, errors, placeholder, list, rules, control }: PriceInterface) => {
   return (

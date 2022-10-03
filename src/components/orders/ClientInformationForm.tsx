@@ -1,5 +1,5 @@
 import React from "react";
-import { SubmitHandler, useForm, UseFormRegister } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";

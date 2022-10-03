@@ -4,41 +4,13 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Background, StyledModal, Description, OutlinedButton, PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { Title } from "../../assets/styles/components/formElements/Row.style";
-import { updateOrder } from "../../store/orders";
+import { resetOrder } from "../../store/orders";
 import ButtonsContainer from "../buttons/ButtonsContainer";
 interface ModalInterface {
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface resetedOrderInterface {
-  serviceCategoryId: number | undefined;
-  serviceId: number | undefined;
-  masterId: number | undefined;
-  date: string;
-  startTime: string;
-  endTime: string;
-  price: string;
-  currencieId: number | undefined;
-  name: string;
-  phone: string;
-  email: string;
-  comment: string;
-}
-const resetedOrder: resetedOrderInterface = {
-  serviceCategoryId: undefined,
-  serviceId: undefined,
-  masterId: undefined,
-  date: "",
-  startTime: "",
-  endTime: "",
-  price: "",
-  currencieId: undefined,
-  name: "",
-  phone: "",
-  email: "",
-  comment: "",
-};
 const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const dispatch = useDispatch<Dispatch<AnyAction>>();
@@ -55,7 +27,7 @@ const Modal = ({ openModal, setOpenModal }: ModalInterface) => {
     });
   };
   const handleClick = () => {
-    dispatch(updateOrder({ ...resetedOrder }));
+    dispatch(resetOrder());
     navigate(`/orders/step/1`);
   };
   return (

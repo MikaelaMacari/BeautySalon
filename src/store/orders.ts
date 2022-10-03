@@ -40,8 +40,11 @@ export const ordersSlice = createSlice({
     updateOrder: (state: NewOrderStateInterface, action: PayloadAction<Partial<OrdersInterface>>) => {
       return { ...state, value: { ...state.value, ...action.payload } };
     },
+    resetOrder: (state: NewOrderStateInterface) => {
+      return { ...state, value: newOrder };
+    },
   },
 });
 
-export const { updateOrder } = ordersSlice.actions;
+export const { updateOrder, resetOrder } = ordersSlice.actions;
 export default ordersSlice.reducer;
