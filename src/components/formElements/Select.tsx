@@ -53,7 +53,9 @@ const Select = ({ control, list, inputName, rules, placeholder, width, defaultVa
               <Option key={option.id} {...props}>
                 {option.name}
               </Option>
-              {!option.isLast && <Divider />}
+              <Divider />
+              {/* {!option.isLast && <Divider />} */}
+              {/* {option.id !== list.length - 1 ? <Divider /> : null} */}
             </OptionsContainer>
           )}
           disablePortal

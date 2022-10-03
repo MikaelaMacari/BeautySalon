@@ -37,12 +37,16 @@ const CardGroup = ({ data, title, dataType }: CardGroupInterface) => {
   };
   const handleClick = (id: number) => {
     let data: any = {};
-    if (dataType === DataTypes.Services) {
-      data = { serviceId: id };
-    } else if (dataType === DataTypes.Products) {
-      data = { serviceCategoryId: id };
-    } else if (dataType === DataTypes.Masters) {
-      data = { masterId: id };
+    switch (dataType) {
+      case DataTypes.Services:
+        data = { serviceId: id };
+        break;
+      case DataTypes.Products:
+        data = { serviceCategoryId: id };
+        break;
+      case DataTypes.Masters:
+        data = { masterId: id };
+        break;
     }
     dispatch(updateOrder({ ...data }));
     startTransition(() => {
