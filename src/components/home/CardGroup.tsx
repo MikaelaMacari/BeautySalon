@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, startTransition } from "react";
 
 import { Container, Grid } from "@mui/material";
 import Slide from "@mui/material/Slide";
@@ -7,13 +7,21 @@ import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
 import { Header, Title } from "../../assets/styles/components/home/CardGroup.style";
 import Card from "./Card";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateOrder } from "../../store/orders";
+import { DataTypes } from "../../ts/enum";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 
 interface CardGroupInterface {
   data: { name: string; img: string; id: number }[];
   title: string;
+  dataType: string;
 }
 
-const CardGroup = ({ data, title }: CardGroupInterface) => {
+const CardGroup = ({ data, title, dataType }: CardGroupInterface) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch<Dispatch<AnyAction>>();
   const [isExpanded, setIsExpanded] = useState(true);
   const containerRef = React.useRef(null);
 
@@ -27,7 +35,24 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
       return <ExpandMoreRoundedIcon fontSize="large" onClick={minimizeContainer} />;
     }
   };
-
+  const handleClick = (id: number) => {
+    let data: any = {};
+    switch (dataType) {
+      case DataTypes.Services:
+        data = { serviceId: id };
+        break;
+      case DataTypes.Products:
+        data = { serviceCategoryId: id };
+        break;
+      case DataTypes.Masters:
+        data = { masterId: id };
+        break;
+    }
+    dispatch(updateOrder({ ...data }));
+    startTransition(() => {
+      navigate(`/orders/step/1`);
+    });
+  };
   return (
     <Container ref={containerRef}>
       <Header>
@@ -41,7 +66,13 @@ const CardGroup = ({ data, title }: CardGroupInterface) => {
             {data.map((item) => {
               return (
                 <Grid key={item.id} item xs={2} sm={2} md={2} lg={2}>
-                  <Card title={item.name} img={item.img} />
+                  <Card
+                    title={item.name}
+                    img={item.img}
+                    handleClick={() => {
+                      handleClick(item.id);
+                    }}
+                  />
                 </Grid>
               );
             })}

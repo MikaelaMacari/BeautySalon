@@ -1,4 +1,4 @@
-import { ProductsInterface } from "../ts/interfaces/data";
+import { ProductsInterface } from "../ts/interfaces";
 
 export const products: ProductsInterface[] = [
   {
@@ -55,5 +55,6 @@ export const products: ProductsInterface[] = [
     id: 22,
     name: "makeup set",
     img: "http://cdn.shopify.com/s/files/1/0330/8660/3308/products/berlin_skin_sandalwood_cream.jpg?v=1654618982",
+    isLast: true,
   },
 ];

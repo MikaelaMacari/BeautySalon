@@ -1,5 +1,12 @@
 import React from "react";
+import ClientInformationForm from "./ClientInformationForm";
+import Header from "./Header";
 const ClientInformation: React.FC = () => {
-  return <div className="clientInformation">Client Information</div>;
+  return (
+    <>
+      <Header />
+      <ClientInformationForm />
+    </>
+  );
 };
 export default ClientInformation;

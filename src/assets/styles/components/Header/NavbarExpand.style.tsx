@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { colors } from "../../variables.style";
+import { colors, fonts } from "../../variables.style";
 
 export const StyledNavbarExpand = styled.div`
   display: flex;
@@ -11,7 +11,7 @@ export const StyledNavbarExpand = styled.div`
   }
 `;
 export const NavbarLink = styled(Link)`
-  font-family: Abel, sans-serif;
+  font-family: ${fonts.primaryFont};
   text-decoration: none;
   text-transform: capitalize;
   margin: 10px;

@@ -1,4 +1,4 @@
-import { ServicesInterface } from "../ts/interfaces/data";
+import { ServicesInterface } from "../ts/interfaces";
 
 export const services: ServicesInterface[] = [
   {
@@ -55,5 +55,6 @@ export const services: ServicesInterface[] = [
     id: 11,
     name: "advanced facial treatments",
     img: "https://c1.wallpaperflare.com/preview/125/975/800/fake-nails-black-white.jpg",
+    isLast: true,
   },
 ];

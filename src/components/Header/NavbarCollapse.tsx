@@ -17,23 +17,27 @@ const links: LinkInterface[] = [
 ];
 
 const NavbarCollapse = ({ extendNavbar, changeState }: INavbarCollapse) => {
+  const showTogglerIcon = () => {
+    if (extendNavbar) {
+      return <> &#215; </>;
+    }
+    return <> &#8801;</>;
+  };
   return (
     <Collapse>
       <NavbarBrand />
       <NavbarNav>
         {links.map((link, index) => {
           return (
-            <NavbarLink key={index} to={link.to}>
+            <NavbarLink key={`navbar-link-${index}`} to={link.to}>
               {link.text}
             </NavbarLink>
           );
         })}
         <VerticalDivider />
         <Avatar />
-        <NavbarLink to="/">
-          <DropdownMenu />
-        </NavbarLink>
-        <NavbarToggler onClick={changeState}>{extendNavbar ? <> &#215; </> : <> &#8801;</>}</NavbarToggler>
+        <DropdownMenu />
+        <NavbarToggler onClick={changeState}>{showTogglerIcon()}</NavbarToggler>
       </NavbarNav>
     </Collapse>
   );

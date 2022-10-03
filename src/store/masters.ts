@@ -14,10 +14,8 @@ export const mastersSlice = createSlice({
   name: "masters",
   initialState,
   reducers: {
-
     setMasters: (state: MasterStateInterface, action: PayloadAction<MastersInterface[]>) => {
       state.value = action.payload;
-
     },
   },
 });

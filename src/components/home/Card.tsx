@@ -3,11 +3,12 @@ import { CardBody, CardImg, CardTitle, StyledCard } from "../../assets/styles/co
 interface CardInterface {
   img: string;
   title: string;
+  handleClick: () => void;
 }
-const Card = ({ img, title }: CardInterface) => {
+const Card = ({ img, title, handleClick }: CardInterface) => {
   return (
     <StyledCard>
-      <CardBody>
+      <CardBody onClick={handleClick}>
         <CardImg src={img}></CardImg>
         <CardTitle>{title}</CardTitle>
       </CardBody>

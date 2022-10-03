@@ -2,9 +2,10 @@
 export const colors = {
   primaryBgColor: `#ebe8ec`,
   secondaryBgColor: `#ffffff`,
+  inputBgColor: `#fafafa`,
   titleBgColor: `#eefd77`,
   avatarBgColor: `#258750`,
-  primaryTextColor: `#5255c8`,
+  primaryTextColor: `rgb(82, 85, 200)`,
   secondaryTextColor: `rgba(0, 0, 0, 0.96)`,
   primaryGrayColor: `rgba(0, 0, 0, 0.6)`,
   secondaryGrayColor: `rgba(0, 0, 0, 0.38)`,
@@ -39,8 +40,8 @@ export const margins = {
 };
 
 export const radius = {
-  $radiusXS: `12px`,
-  $radiusS: `20px`,
+  radiusXS: `12px`,
+  radiusS: `20px`,
 };
 
 export const width = {

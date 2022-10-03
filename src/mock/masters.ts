@@ -55,5 +55,6 @@ export const masters: MastersInterface[] = [
     id: 33,
     name: "Ioana Doigalbeni",
     img: "https://images.unsplash.com/photo-1584361853901-dd1904bb7987?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjA0fHxyYW5kb20lMjBwZW9wbGV8ZW58MHx8MHxibGFja19hbmRfd2hpdGV8&auto=format&fit=crop&w=500&q=60",
+    isLast: true,
   },
 ];
