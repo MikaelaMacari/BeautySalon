@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "../components/layout/layout";
 import { RouteInterface } from "../ts/interfaces";
 import homeRoutes from "./modules/home";
+import loginRoutes from "./modules/login";
+import mainRoutes from "./modules/main";
 import orderRoutes from "./modules/orders";
 
-const routes: RouteInterface[] = [...homeRoutes, ...orderRoutes];
+const routes: RouteInterface[] = [...homeRoutes, ...loginRoutes, ...mainRoutes, ...orderRoutes];
 const BaseRouter: React.FC = () => {
   return (
     <BrowserRouter>
