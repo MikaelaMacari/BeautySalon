@@ -10,6 +10,7 @@ import { PrimaryButton } from "../../assets/styles/components/formElements/Modal
 import { StyledForm } from "../../assets/styles/components/LoginContent.style";
 import { updateUser } from "../../store/auth";
 import axios from "axios";
+import Error from "../formElements/Error";
 
 const validUser = {
   username: "root@domain.com",
@@ -53,13 +54,11 @@ const LoginForm = () => {
       const response = await axios.post("https://api.nanoit.dev/auth/login", { email: data.username, password: data.password });
       updateNewUser(response);
       navigate(`/`);
-    } catch (e) {
+    } catch (e: any) {
       console.log(e);
+      navigate(`/main`);
     }
   };
-  // const onSubmit = (data: any) => {
-  //   console.log(data);
-  // };
 
   const formInputRows = [
     {

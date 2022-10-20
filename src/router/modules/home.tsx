@@ -3,7 +3,7 @@ import { RouteInterface } from "../../ts/interfaces";
 
 const homeRoutes: RouteInterface[] = [
   {
-    public: true,
+    public: false,
     path: "/",
     element: lazy(() => import("../../pages/home")),
   },
