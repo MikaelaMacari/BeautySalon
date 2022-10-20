@@ -6,13 +6,10 @@ export interface UserInterface {
 }
 
 interface NewUserStateInterface {
-  value: Partial<UserInterface>;
+  value: Partial<UserInterface> | null;
 }
 
-const newUser = {
-  username: "",
-  password: null,
-};
+const newUser = null;
 const initialState: NewUserStateInterface = {
   value: newUser,
 };

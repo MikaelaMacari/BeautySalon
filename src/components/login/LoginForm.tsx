@@ -9,6 +9,14 @@ import { RootState } from "../../store/types";
 import { PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { StyledForm } from "../../assets/styles/components/LoginContent.style";
 import { updateUser } from "../../store/auth";
+import axios from "axios";
+
+const validUser = {
+  username: "root@domain.com",
+  password: "12345678",
+  name: "John Doe",
+};
+
 interface FormInputInterface {
   username: string;
   password: string | number | null;
@@ -23,6 +31,15 @@ const LoginForm = () => {
   const updateNewUser = (data: any) => {
     dispatch(updateUser({ ...data }));
   };
+  // const validateUser = (data: any) => {
+  //   return new Promise((resolve, reject) => {
+  //     if (data.username === validUser.username && data.password === validUser.password) {
+  //       resolve(validUser);
+  //     } else {
+  //       reject("Invalid Credentials");
+  //     }
+  //   });
+  // };
   const {
     register,
     handleSubmit,
@@ -30,16 +47,19 @@ const LoginForm = () => {
   } = useForm<FormInputInterface>({
     mode: "all",
     reValidateMode: "onChange",
-    defaultValues: newUser,
   });
-  const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
-    updateNewUser(data);
-    // navigate(`/orders/step/3`);
+  const onSubmit: SubmitHandler<FormInputInterface> = async (data: FormInputInterface) => {
+    try {
+      const response = await axios.post("https://api.nanoit.dev/auth/login", { email: data.username, password: data.password });
+      updateNewUser(response);
+      navigate(`/`);
+    } catch (e) {
+      console.log(e);
+    }
   };
   // const onSubmit = (data: any) => {
   //   console.log(data);
   // };
-  console.log(newUser);
 
   const formInputRows = [
     {
