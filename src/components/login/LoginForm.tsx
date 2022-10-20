@@ -8,21 +8,20 @@ import FormContainer from "../formElements/FormContainer";
 import { RootState } from "../../store/types";
 import { PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { StyledForm } from "../../assets/styles/components/LoginContent.style";
+import { updateUser } from "../../store/auth";
 interface FormInputInterface {
-  name: string;
-  phone: string;
-  email: string;
-  comment: string;
+  username: string;
+  password: string | number | null;
 }
 
 const LoginForm = () => {
-  const newOrder = useSelector((state: RootState) => state.orders.value);
+  const newUser = useSelector((state: RootState) => state.auth.value);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // Set values in Redux store
-  const updateNewOrder = (data: any) => {
-    dispatch(updateOrder({ ...data }));
+  const updateNewUser = (data: any) => {
+    dispatch(updateUser({ ...data }));
   };
   const {
     register,
@@ -31,15 +30,17 @@ const LoginForm = () => {
   } = useForm<FormInputInterface>({
     mode: "all",
     reValidateMode: "onChange",
-    defaultValues: newOrder,
+    defaultValues: newUser,
   });
-  // const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
-  //   updateNewOrder(data);
-  //   navigate(`/orders/step/3`);
-  // };
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const onSubmit: SubmitHandler<FormInputInterface> = (data: FormInputInterface) => {
+    updateNewUser(data);
+    // navigate(`/orders/step/3`);
   };
+  // const onSubmit = (data: any) => {
+  //   console.log(data);
+  // };
+  console.log(newUser);
+
   const formInputRows = [
     {
       id: 1,
@@ -61,25 +62,20 @@ const LoginForm = () => {
       description: "Enter your password",
       validationSchema: {
         required: "Password field is required!",
+        // pattern: {
+        //   value: /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
+        //   message: "Please enter a valid password!",
+        // },
       },
     },
 
-    // {
-    //   id: 3,
-    //   type: "email",
-    //   inputName: "email",
-    //   placeholder: "client@power-beauty.md",
-    //   title: "E-mail",
-    //   description: "Enter your email",
-    //   validationSchema: {
-    //     required: "Email field is required!",
-    //     pattern: {
-    //       value:
-    //         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    //       message: "Please enter a valid email!",
-    //     },
-    //   },
-    // },
+    /*
+        The password length must be greater than or equal to 8
+        The password must contain one or more uppercase characters
+        The password must contain one or more lowercase characters
+        The password must contain one or more numeric values
+        The password must contain one or more special characters
+    */
   ];
   return (
     <>
