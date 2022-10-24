@@ -1,22 +1,15 @@
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
 import FormInput from "../formElements/FormInput";
 import FormContainer from "../formElements/FormContainer";
 import { RootState } from "../../store/types";
 import { PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { StyledForm } from "../../assets/styles/components/LoginContent.style";
-import { updateUser } from "../../store/auth";
-import axios from "axios";
-import Error from "../formElements/Error";
-
-const validUser = {
-  username: "root@domain.com",
-  password: "12345678",
-  name: "John Doe",
-};
+import { ApiRoutes } from "../../ts/enum/apiRoutes";
+import { login } from "../../store/auth";
+import http from "../../services/http";
 
 interface FormInputInterface {
   username: string;
@@ -24,23 +17,10 @@ interface FormInputInterface {
 }
 
 const LoginForm = () => {
-  const newUser = useSelector((state: RootState) => state.auth.value);
+  const newUser = useSelector((state: RootState) => state.auth.userInfo);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Set values in Redux store
-  const updateNewUser = (data: any) => {
-    dispatch(updateUser({ ...data }));
-  };
-  // const validateUser = (data: any) => {
-  //   return new Promise((resolve, reject) => {
-  //     if (data.username === validUser.username && data.password === validUser.password) {
-  //       resolve(validUser);
-  //     } else {
-  //       reject("Invalid Credentials");
-  //     }
-  //   });
-  // };
   const {
     register,
     handleSubmit,
@@ -51,11 +31,10 @@ const LoginForm = () => {
   });
   const onSubmit: SubmitHandler<FormInputInterface> = async (data: FormInputInterface) => {
     try {
-      const response = await axios.post("https://api.nanoit.dev/auth/login", { email: data.username, password: data.password });
-      updateNewUser(response);
+      const response = await http.post(ApiRoutes.Login, { email: data.username, password: data.password });
+      dispatch(login(response));
       navigate(`/`);
     } catch (e: any) {
-      console.log(e);
       navigate(`/main`);
     }
   };
@@ -81,20 +60,8 @@ const LoginForm = () => {
       description: "Enter your password",
       validationSchema: {
         required: "Password field is required!",
-        // pattern: {
-        //   value: /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-        //   message: "Please enter a valid password!",
-        // },
       },
     },
-
-    /*
-        The password length must be greater than or equal to 8
-        The password must contain one or more uppercase characters
-        The password must contain one or more lowercase characters
-        The password must contain one or more numeric values
-        The password must contain one or more special characters
-    */
   ];
   return (
     <>
