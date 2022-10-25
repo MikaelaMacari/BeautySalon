@@ -2,7 +2,6 @@ import React from "react";
 import { PageLayout } from "../../ts/enum";
 
 export const LayoutType = {
-  order: React.lazy(() => import("./orders")),
   default: React.lazy(() => import("../../layouts/default")),
 } as any;
 

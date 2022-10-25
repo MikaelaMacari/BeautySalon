@@ -1,9 +1,9 @@
 import React from "react";
-import MainContent from "../components/MainContent";
+import Content from "../components/main/Content";
 const Main: React.FC = () => {
   return (
     <>
-      <MainContent />
+      <Content />
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField, Divider } from "@mui/material";
+import { TextField, Divider, MenuItem } from "@mui/material";
 import { Control, Controller } from "react-hook-form";
 import { Option, OptionsContainer, StyledSelect } from "../../assets/styles/components/formElements/Select.style.";
 import { FormInputInterface } from "../orders/SelectServiceForm";
@@ -53,9 +53,7 @@ const Select = ({ control, list, inputName, rules, placeholder, width, defaultVa
               <Option key={option.id} {...props}>
                 {option.name}
               </Option>
-              <Divider />
-              {/* {!option.isLast && <Divider />} */}
-              {/* {option.id !== list.length - 1 ? <Divider /> : null} */}
+              {list.indexOf(option) !== list.indexOf(list[list.length - 1]) && <Divider />}
             </OptionsContainer>
           )}
           disablePortal

@@ -37,7 +37,6 @@ const FinishOrder: React.FC = () => {
 
   return (
     <>
-      <Header />
       <Container maxWidth="sm">
         <Row title="Service" description={`${getServiceName()}`} />
         <Row title="Master" description={`${getMasterName()}`} />
