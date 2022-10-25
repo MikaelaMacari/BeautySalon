@@ -7,7 +7,6 @@ import FormContainer from "../formElements/FormContainer";
 const SelectService: React.FC = () => {
   return (
     <>
-      <Header />
       <FormContainer>
         <SelectServiceForm />
       </FormContainer>

@@ -1,10 +1,10 @@
 import { Container } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import { PrimaryButton } from "../assets/styles/components/formElements/Modal.style";
-import { Hero, Title, Description } from "../assets/styles/components/MainContent.style";
+import { PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
+import { Hero, Title, Description } from "../../assets/styles/components/MainContent.style";
 
-const MainContent: React.FC = () => {
+const Content: React.FC = () => {
   return (
     <Container maxWidth="md">
       <Hero>
@@ -22,4 +22,4 @@ const MainContent: React.FC = () => {
   );
 };
 
-export default MainContent;
+export default Content;

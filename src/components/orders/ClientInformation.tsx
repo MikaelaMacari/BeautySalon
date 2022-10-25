@@ -4,7 +4,6 @@ import Header from "./Header";
 const ClientInformation: React.FC = () => {
   return (
     <>
-      <Header />
       <ClientInformationForm />
     </>
   );
