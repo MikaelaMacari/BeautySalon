@@ -8,6 +8,7 @@ const token = localStorage.getItem(TOKEN_KEY) ? localStorage.getItem(TOKEN_KEY) 
 export interface UserInterface {
   username: string;
   password: string | number | null;
+  name: string;
 }
 
 interface AuthStateInterface {
