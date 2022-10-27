@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Background, StyledModal, Description, OutlinedButton, PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { Title } from "../../assets/styles/components/formElements/Row.style";
 import { resetOrder } from "../../store/orders";
-import ButtonsContainer from "../buttons/ButtonsContainer";
+import ButtonsContainer from "./buttons/ButtonsContainer";
 interface ModalInterface {
   openModal: boolean;
   setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;

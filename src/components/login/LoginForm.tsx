@@ -2,8 +2,8 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import FormInput from "../formElements/FormInput";
-import FormContainer from "../formElements/FormContainer";
+import FormInput from "../base/formElements/FormInput";
+import FormContainer from "../base/formElements/FormContainer";
 import { PrimaryButton } from "../../assets/styles/components/formElements/Modal.style";
 import { StyledForm } from "../../assets/styles/components/LoginContent.style";
 import { ApiRoutes } from "../../ts/enum/apiRoutes";
@@ -24,8 +24,8 @@ const LoginForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputInterface>({
-    mode: "all",
-    reValidateMode: "onChange",
+    mode: "onChange",
+    reValidateMode: "onSubmit",
   });
   const onSubmit: SubmitHandler<FormInputInterface> = async (data: FormInputInterface) => {
     try {

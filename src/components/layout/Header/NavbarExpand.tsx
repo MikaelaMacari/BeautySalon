@@ -1,6 +1,6 @@
 import React from "react";
-import { NavbarLink, StyledNavbarExpand } from "../../assets/styles/components/Header/NavbarExpand.style";
-import { LinkInterface } from "../../ts/interfaces/links";
+import { NavbarLink, StyledNavbarExpand } from "../../../assets/styles/components/Header/NavbarExpand.style";
+import { LinkInterface } from "../../../ts/interfaces/links";
 const links: LinkInterface[] = [
   { to: "/", text: "help" },
   { to: "/", text: "orders" },

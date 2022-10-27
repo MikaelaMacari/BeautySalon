@@ -7,8 +7,8 @@ import Input from "./Input";
 import Error from "./Error";
 import Select from "./Select";
 import { Control, UseFormRegister } from "react-hook-form";
-import { FormInputInterface } from "../orders/SelectServiceForm";
-import { ListInterface } from "../../ts/interfaces";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
+import { ListInterface } from "../../../ts/interfaces";
 
 interface PriceInterface {
   required?: string;

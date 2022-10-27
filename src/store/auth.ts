@@ -1,8 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import http from "../services/http";
 import { TOKEN_KEY } from "../ts/constants";
+import { ApiRoutes } from "../ts/enum/apiRoutes";
 import { CredentialsInterface } from "../ts/interfaces";
 
-const newUser = null;
+const getUserInfo = async () => {
+  try {
+    return await http.get(ApiRoutes.UserInfo);
+  } catch (error) {
+    return null;
+  }
+};
+let newUser = null;
+getUserInfo().then((userInfo: any) => {
+  newUser = userInfo;
+});
 const token = localStorage.getItem(TOKEN_KEY) ? localStorage.getItem(TOKEN_KEY) : null;
 
 export interface UserInterface {

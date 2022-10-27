@@ -3,13 +3,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
-import FormInput from "../formElements/FormInput";
-import Textarea from "../formElements/Textarea";
-import FormContainer from "../formElements/FormContainer";
+import FormInput from "../base/formElements/FormInput";
+import Textarea from "../base/formElements/Textarea";
+import FormContainer from "../base/formElements/FormContainer";
 import { StyledForm } from "../../assets/styles/components/formElements/Form.style";
-import ButtonsContainer from "../buttons/ButtonsContainer";
-import { Button } from "../buttons/Button";
+import ButtonsContainer from "../base/buttons/ButtonsContainer";
+import { Button } from "../base/buttons/Button";
 import { RootState } from "../../store/types";
+import { formInputRows } from "../../config/form/clientInformation";
 interface FormInputInterface {
   name: string;
   phone: string;
@@ -39,52 +40,7 @@ const ClientInformationForm = () => {
     updateNewOrder(data);
     navigate(`/orders/step/3`);
   };
-  const formInputRows = [
-    {
-      id: 1,
-      type: "text",
-      inputName: "name",
-      placeholder: "Vasile Alexandri",
-      title: "Name",
-      description: "Enter your name",
-      validationSchema: {
-        required: "Name field is required!",
-      },
-    },
-    {
-      id: 2,
-      type: "tel",
-      inputName: "phone",
-      placeholder: "+373(_______)",
-      title: "Phone",
-      description: "Enter your phone",
-      validationSchema: {
-        required: "Phone field is required!",
-        pattern: {
-          value:
-            /((?:\+|00)[17](?: |\-)?|(?:\+|00)[1-9]\d{0,2}(?: |\-)?|(?:\+|00)1\-\d{3}(?: |\-)?)?(0\d|\([0-9]{3}\)|[1-9]{0,3})(?:((?: |\-)[0-9]{2}){4}|((?:[0-9]{2}){4})|((?: |\-)[0-9]{3}(?: |\-)[0-9]{4})|([0-9]{7}))/g,
-          message: "Please enter a valid phone!",
-        },
-      },
-    },
 
-    {
-      id: 3,
-      type: "email",
-      inputName: "email",
-      placeholder: "client@power-beauty.md",
-      title: "E-mail",
-      description: "Enter your email",
-      validationSchema: {
-        required: "Email field is required!",
-        pattern: {
-          value:
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-          message: "Please enter a valid email!",
-        },
-      },
-    },
-  ];
   return (
     <>
       <FormContainer>

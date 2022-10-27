@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/types";
 import { updateOrder } from "../../store/orders";
 import { useNavigate } from "react-router-dom";
-import Date from "../formElements/Date";
-import FormContainer from "../formElements/FormContainer";
-import Time from "../formElements/Time";
-import Price from "../formElements/Price";
-import FormSelect from "../formElements/FormSelect";
+import Date from "../base/formElements/Date";
+import FormContainer from "../base/formElements/FormContainer";
+import Time from "../base/formElements/Time";
+import Price from "../base/formElements/Price";
+import FormSelect from "../base/formElements/FormSelect";
 import { StyledForm } from "../../assets/styles/components/formElements/Form.style";
-import { Button } from "../buttons/Button";
+import { Button } from "../base/buttons/Button";
 
 export interface FormInputInterface {
   serviceCategoryId: number;
@@ -26,7 +26,6 @@ export interface FormInputInterface {
 }
 
 const SelectServiceForm = () => {
-  // Store lists
   const currencies = useSelector((state: RootState) => state.currencies.value);
   const products = useSelector((state: RootState) => state.products.value);
   const services = useSelector((state: RootState) => state.services.value);
@@ -35,7 +34,6 @@ const SelectServiceForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //FUNCTIONS -> Set values in Redux store
   const updateNewOrder = (data: any) => {
     dispatch(updateOrder({ ...data }));
   };
@@ -58,7 +56,6 @@ const SelectServiceForm = () => {
       <Header />
       <FormContainer>
         <StyledForm error={false} onSubmit={handleSubmit(onSubmit)}>
-          {/* SERVICE CATEGORY */}
           <FormSelect
             defaultValue={newOrder.serviceCategoryId}
             placeholder="Select from list"
@@ -72,7 +69,6 @@ const SelectServiceForm = () => {
             }}
             errors={errors}
           />
-          {/* SERVICES */}
           <FormSelect
             defaultValue={newOrder.serviceId}
             title="Service"
@@ -86,7 +82,6 @@ const SelectServiceForm = () => {
             placeholder="Select from list"
             errors={errors}
           />
-          {/* MASTER */}
           <FormSelect
             defaultValue={newOrder.masterId}
             title="Master"
@@ -100,8 +95,6 @@ const SelectServiceForm = () => {
             placeholder="Select from list"
             errors={errors}
           />
-
-          {/* DATE */}
           <Date
             title="Date"
             description="Select a date"
@@ -114,10 +107,7 @@ const SelectServiceForm = () => {
               required: "Date field is required!",
             }}
           />
-          {/* Time */}
           <Time register={register} errors={errors} />
-
-          {/* PRICE */}
           <Price
             register={register}
             errors={errors}

@@ -1,12 +1,12 @@
-import { NavbarLink, VerticalDivider } from "../../assets/styles/components/Header/Header.style";
-import { Collapse, NavbarNav, NavbarToggler } from "../../assets/styles/components/Header/NavbarCollapse.style";
+import { NavbarLink, VerticalDivider } from "../../../assets/styles/components/Header/Header.style";
+import { Collapse, NavbarNav, NavbarToggler } from "../../../assets/styles/components/Header/NavbarCollapse.style";
 import NavbarBrand from "./NavbarBrand";
 
-import { LinkInterface } from "../../ts/interfaces/links";
+import { LinkInterface } from "../../../ts/interfaces/links";
 import Avatar from "./Avatar";
 import DropdownMenu from "./DropdownMenu";
 import { useSelector } from "react-redux";
-import { RootState } from "../../store/types";
+import { RootState } from "../../../store/types";
 
 interface INavbarCollapse {
   extendNavbar: boolean;

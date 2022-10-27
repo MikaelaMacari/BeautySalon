@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
-import { FormInputInterface } from "../orders/SelectServiceForm";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
 import { UseFormRegister } from "react-hook-form";
 
 export interface DateInterface {

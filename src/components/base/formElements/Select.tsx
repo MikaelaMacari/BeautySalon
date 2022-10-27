@@ -1,9 +1,9 @@
 import React from "react";
 import { TextField, Divider, MenuItem } from "@mui/material";
 import { Control, Controller } from "react-hook-form";
-import { Option, OptionsContainer, StyledSelect } from "../../assets/styles/components/formElements/Select.style.";
-import { FormInputInterface } from "../orders/SelectServiceForm";
-import { ListInterface } from "../../ts/interfaces";
+import { Option, OptionsContainer, StyledSelect } from "../../../assets/styles/components/formElements/Select.style.";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
+import { ListInterface } from "../../../ts/interfaces";
 
 interface SelectInterface {
   control?: Control<FormInputInterface, any>;

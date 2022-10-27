@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledRow, Title, Description } from "../../assets/styles/components/formElements/Row.style";
+import { StyledRow, Title, Description } from "../../../assets/styles/components/formElements/Row.style";
 
 interface RowInterface {
   title: string;

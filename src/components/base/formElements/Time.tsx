@@ -5,7 +5,7 @@ import Label from "./Label";
 import Input from "./Input";
 import Error from "./Error";
 import { UseFormRegister } from "react-hook-form";
-import { FormInputInterface } from "../orders/SelectServiceForm";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
 
 interface TimeInterface {
   required?: boolean;

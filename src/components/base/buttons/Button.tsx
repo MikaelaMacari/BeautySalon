@@ -1,7 +1,7 @@
 import React from "react";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { StyledButton } from "../../assets/styles/components/buttons/Button.style";
+import { StyledButton } from "../../../assets/styles/components/buttons/Button.style";
 interface ButtonInterface {
   title: string;
   handleClick?: () => void;

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Navbar } from "../../assets/styles/components/Header/Header.style";
+import { Navbar } from "../../../assets/styles/components/Header/Header.style";
 
-import NavbarCollapse from "../Header/NavbarCollapse";
-import NavbarExpand from "../Header/NavbarExpand";
+import NavbarCollapse from "./NavbarCollapse";
+import NavbarExpand from "./NavbarExpand";
 
 const Header: React.FC = () => {
   const [extendNavbar, setExtendNavbar] = useState(false);

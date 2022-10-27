@@ -1,9 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { DropdownOptionsContainer, OptionsContainer } from "../../assets/styles/components/Header/DropdownMenu.style";
-import { NavbarLink } from "../../assets/styles/components/Header/Header.style";
-import { logout } from "../../store/auth";
-import { LinkInterface } from "../../ts/interfaces/links";
+import { DropdownOptionsContainer, OptionsContainer } from "../../../assets/styles/components/Header/DropdownMenu.style";
+import { NavbarLink } from "../../../assets/styles/components/Header/Header.style";
+import { logout } from "../../../store/auth";
+import { LinkInterface } from "../../../ts/interfaces/links";
 
 const links: LinkInterface[] = [
   { to: "/", text: "cart" },
@@ -16,11 +16,11 @@ const NavbarDropdown: React.FC = () => {
     <DropdownOptionsContainer>
       {links.map((link, index) => {
         return (
-          <>
+          <div key={index}>
             <OptionsContainer key={`dropdown-item-${index}`}>
               <NavbarLink to={link.to}>{link.text}</NavbarLink>
             </OptionsContainer>
-          </>
+          </div>
         );
       })}
       <OptionsContainer

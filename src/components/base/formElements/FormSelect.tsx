@@ -5,8 +5,8 @@ import Label from "./Label";
 import Error from "./Error";
 import Select from "./Select";
 import { Control } from "react-hook-form";
-import { FormInputInterface } from "../orders/SelectServiceForm";
-import { ListInterface } from "../../ts/interfaces";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
+import { ListInterface } from "../../../ts/interfaces";
 
 interface FormSelectInterface {
   title?: string;

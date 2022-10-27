@@ -1,7 +1,7 @@
 import React from "react";
 import { UseFormRegister } from "react-hook-form";
-import { StyledInput } from "../../assets/styles/components/formElements/Input.style";
-import { FormInputInterface } from "../orders/SelectServiceForm";
+import { StyledInput } from "../../../assets/styles/components/formElements/Input.style";
+import { FormInputInterface } from "../../orders/SelectServiceForm";
 
 interface InputInterface {
   inputName: string | any;

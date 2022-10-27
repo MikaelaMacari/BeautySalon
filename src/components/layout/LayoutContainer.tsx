@@ -9,7 +9,7 @@ interface LayoutProps {
   route: any;
   children: JSX.Element;
 }
-export const Layout = (props: LayoutProps) => {
+export const LayoutContainer = (props: LayoutProps) => {
   const layoutName = props.route.layout || PageLayout.Default;
   const Default = LayoutType[layoutName];
   return <Default>{props.children}</Default>;
