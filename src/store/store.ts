@@ -4,7 +4,7 @@ import servicesReducer from "./services";
 import productsReducer from "./products";
 import mastersReducer from "./masters";
 import currenciesReducer from "./currencies";
-import usersReducer from "./auth";
+import authReducer from "./auth";
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +13,6 @@ export const store = configureStore({
     products: productsReducer,
     masters: mastersReducer,
     currencies: currenciesReducer,
-    auth: usersReducer,
+    auth: authReducer,
   },
 });

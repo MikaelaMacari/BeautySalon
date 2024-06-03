@@ -1,31 +1,54 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import http from "../services/http";
+import { TOKEN_KEY } from "../ts/constants";
+import { ApiRoutes } from "../ts/enum/apiRoutes";
+import { CredentialsInterface } from "../ts/interfaces";
+
+const getUserInfo = async () => {
+  try {
+    return await http.get(ApiRoutes.UserInfo);
+  } catch (error) {
+    return null;
+  }
+};
+let newUser = null;
+getUserInfo().then((userInfo: any) => {
+  newUser = userInfo;
+});
+const token = localStorage.getItem(TOKEN_KEY) ? localStorage.getItem(TOKEN_KEY) : null;
 
 export interface UserInterface {
   username: string;
   password: string | number | null;
+  name: string;
 }
 
-interface NewUserStateInterface {
-  value: Partial<UserInterface> | null;
+interface AuthStateInterface {
+  userInfo: Partial<UserInterface> | null;
+  loading: boolean;
+  token: string | null;
 }
 
-const newUser = null;
-const initialState: NewUserStateInterface = {
-  value: newUser,
+const initialState: AuthStateInterface = {
+  userInfo: newUser,
+  loading: false,
+  token,
 };
 
-export const usersSlice = createSlice({
-  name: "users",
+export const authSlice = createSlice({
+  name: "auth",
   initialState,
   reducers: {
-    updateUser: (state: NewUserStateInterface, action: PayloadAction<Partial<UserInterface>>) => {
-      return { ...state, value: { ...state.value, ...action.payload } };
+    login: (state: AuthStateInterface, { payload: { token, user: userInfo } }: PayloadAction<CredentialsInterface>) => {
+      localStorage.setItem(TOKEN_KEY, token);
+      return { ...state, userInfo, token };
     },
-    resetUserCredentials: (state: NewUserStateInterface) => {
-      return { ...state, value: newUser };
+    logout: (state: AuthStateInterface) => {
+      localStorage.removeItem(TOKEN_KEY);
+      return { ...state, userInfo: null, token: null };
     },
   },
 });
 
-export const { updateUser, resetUserCredentials } = usersSlice.actions;
-export default usersSlice.reducer;
+export const { login, logout } = authSlice.actions;
+export default authSlice.reducer;
